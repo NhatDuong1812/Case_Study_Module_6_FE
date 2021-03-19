@@ -1,0 +1,88 @@
+<app-header></app-header>
+<div class="container">
+  <header class="jumbotron">
+    <div class="container emp-profile" >
+      <form method="post">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="profile-head">
+              <h2 style="color: blue">
+                <strong>SỬA BÀI HÁT</strong>
+              </h2>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="tab-content profile-tab" id="myTabContent">
+              <div style="margin-left: 50px">
+
+                <form (ngSubmit)="editSong(song.id)">
+                  <div>
+                    <div class="row" style="margin-bottom: 25px">
+                      <div class="col-md-2">
+                        <label>Tên bài</label>
+                      </div>
+                      <div class="col-md-10">
+                        <label>
+                          <input type="text" [(ngModel)]="song.name" name="name">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 25px">
+                      <div class="col-md-2">
+                        <label>Tác giả</label>
+                      </div>
+                      <div class="col-md-10">
+                        <label>
+                          <input type="text" [(ngModel)]="song.author" name="author">
+                        </label>
+                      </div>
+                    </div>
+                    <div class="row" style="margin-bottom: 25px">
+                      <div class="col-md-2" style="margin-right: 30px">
+                        <label>Avatar</label>
+                      </div>
+                      <tr>
+                        <td><label for="avatar"></label></td>
+                        <td><input type="file" [(ngModel)]="song.avatar" name="avatar" id="avatar" (change)="showPreview($event)" #fileUploader></td>
+                        <img [src] = "song.avatar" style="width: 150px; height: auto" alt="Anh dai dien" (click)="fileUploader.click()" >
+                      </tr>
+                    </div>
+                    <div class="row" style="margin-bottom: 25px">
+                      <div class="col-md-2">
+                        <label>Lời bài hát</label>
+                      </div>
+                      <div class="col-md-10">
+                        <label>
+                          <textarea cols="75" rows="20"  [(ngModel)]="song.lyric" name="lyric"></textarea>
+                        </label>
+                      </div>
+                    </div>
+                    <div>
+                      <p style="color: red" *ngIf="editSuccess">Sửa thành công</p>
+                    </div>
+                    <div class="row" style="margin-top: 50px">
+                      <div class="col-md-3">
+                        <div class="row">
+                          <button type="submit" class="profile-edit-btn" name="btnAddMore">Sửa bài hát</button>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="row">
+                          <button type="submit" (click)="cancel()" class="profile-edit-btn" name="btnAddMore">Quay lại list</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </header>
+</div>
+
+
+<app-footer></app-footer>

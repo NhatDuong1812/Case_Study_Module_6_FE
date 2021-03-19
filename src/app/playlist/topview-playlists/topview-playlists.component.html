@@ -1,0 +1,16 @@
+
+    <li *ngFor="let playlist of playlistTopView;let i = index" class="media border-bottom py-2">
+      <b style="margin: 25px 30px 20px 20px; color: red; font-size: 25px">{{i+1}}</b>
+      <div class="position-relative">
+        <img src="{{playlist.avatar}}" class="mr-3 rounded" width="85" height="85" alt="...">
+      </div>
+      <div class="media-body">
+        <h3 class="mt-0 mb-1"><a href="playlists/display/{{playlist.id}}">{{playlist.name}}</a></h3>
+        <small>{{userdatas[i].name}}</small>
+        <br>
+        <strong style="color: red"><i class="fas fa-headphones-alt" style="margin-right: 5px"></i>{{playlist.view}}</strong>
+      </div>
+      <div></div>
+      <a href="#" class="px-2 py-1 mr-2 bg-success text-white" title="Play"><i class="fas fa-play"></i></a>
+      <a href="#" class="px-2 py-1 bg-danger text-white" song-id="1" title="Thích"><i class="far fa-heart"></i></a>
+    </li>

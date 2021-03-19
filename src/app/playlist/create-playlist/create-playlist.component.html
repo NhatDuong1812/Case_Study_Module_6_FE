@@ -1,0 +1,32 @@
+<app-header></app-header>
+<form (ngSubmit)="submit()">
+  <div class="container rounded bg-white mt-5 mb-5"><span class="text-uppercase name" style="font-size: 20px">CẬP NHẬT PLAYLIST</span>
+    <div class="row">
+      <div class="col-md-3 border-right">
+        <div class="d-flex flex-column align-items-center text-center p-3 py-5"><span class="font-weight-bold"></span><span class="text-black-50"></span><span> </span></div>
+      </div>
+      <div class="col-md-5 border-right">
+        <div class="p-3 py-5">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-right">Playlist Settings</h4>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-12"><label class="labels">Tên Playlist</label><input type="text" class="form-control" placeholder="tên playlist" name="name" [(ngModel)]="playlist.name"></div>
+          </div>
+        </div>
+        <div class="mt-3 px-4"> <span class="text-uppercase name">Playlist Picture</span>
+          <div class="d-flex flex-row align-items-center mt-2">
+            <div class="ml-3"> <input type="file" [(ngModel)]="playlist.avatar" name="avatar" id="avatar" (change)="showPreview($event)" ></div>
+          </div>
+        </div>
+        <div>
+          <p style="color: red" *ngIf="createSuccess">Tạo playlist thành công</p>
+        </div>
+        <div>
+          <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit" style="margin: 5px">Save</button> <button class="btn btn-primary profile-button" type="submit" (click)="cancel()" >Cancel</button></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+<app-footer></app-footer>

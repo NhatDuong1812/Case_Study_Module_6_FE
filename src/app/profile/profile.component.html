@@ -1,0 +1,204 @@
+<app-header></app-header>
+<div class="container" *ngIf="currentUser">
+  <header class="jumbotron">
+    <div class="container emp-profile" >
+      <form method="post">
+        <div class="row">
+          <div class="col-md-4">
+            <div class="profile-img">
+
+              <img [src] = "imgSrc" style="width: 150px; height: auto" alt="Anh dai dien" (click)="fileUploader.click()" >
+
+              <div class="file btn btn-lg btn-primary">
+                Đổi ảnh
+                <input type="file" formControlName="avatar" #fileUploader
+                       (change)="showPreview($event)">
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="profile-head">
+              <h2 style="color: blue">
+                <strong>QUẢN LÝ TÀI KHOẢN</strong>
+              </h2>
+              <ul class="nav nav-tabs" id="myTab" role="tablist">
+                <li class="nav-item">
+                  <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Thông tin</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Bài hát</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Playlist</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="tab-content profile-tab" id="myTabContent">
+              <div style="margin-left: 320px" class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                <div *ngIf="editProfile">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>Họ tên</label>
+                    </div>
+                    <div class="col-md-6">
+                      <p>{{userDetail.name}}</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>Địa chỉ</label>
+                    </div>
+                    <div class="col-md-6">
+                      <p>{{userDetail.address}}</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>Email</label>
+                    </div>
+                    <div class="col-md-6">
+                      <p>{{userDetail.email}}</p>
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>Số điện thoại</label>
+                    </div>
+                    <div class="col-md-6">
+                      <p>{{userDetail.tel}}</p>
+                    </div>
+                  </div>
+                  <div class="row" style="margin-top: 50px">
+                    <div class="col-md-4">
+                      <div class="row">
+                        <input type="submit" (click)="showFormEdit()" class="profile-edit-btn" name="btnAddMore" value="Chỉnh sửa thông tin"/>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="row">
+                        <input type="submit" (click)="changePassword()" class="profile-edit-btn" name="btnAddMore" value="Đổi mật khẩu"/>
+                      </div>
+                    </div>
+                  </div>
+                  <form style="margin-top: 40px" *ngIf="!changePass" (ngSubmit)="changePasswordSuccess()">
+                    <div class="row mt-2" >
+                      <div class="col-md-6">
+                        <label>Nhập mật khẩu hiện tại</label>
+                      </div>
+                      <div class="col-md-6">
+                        <input type="text" name="password" [(ngModel)]="oldPass">
+                      </div>
+                      <div *ngIf="!oldPassMessage">
+                        <p style="color: red">Mật khẩu hiện tại không đúng, vui lòng nhập lại</p>
+                      </div>
+                    </div>
+                    <div class="row mt-2">
+                      <div class="col-md-6">
+                        <label>Nhập mật khẩu mới</label>
+                      </div>
+                      <div class="col-md-6">
+                        <input type="text" name="password" [(ngModel)]="newPass">
+                      </div>
+                    </div>
+                    <div class="row mt-2" >
+                      <div class="col-md-6">
+                        <label>Nhập lại mật khẩu</label>
+                      </div>
+                      <div class="col-md-6">
+                        <input type="text" name="password" [(ngModel)]="checkPass">
+                      </div>
+                      <div *ngIf="!checkPassMessage">
+                        <p style="color: red">Mật khẩu mới không khớp hoặc ít hơn 6 ký tự, vui lòng nhập lại</p>
+                      </div>
+                      <div *ngIf="!changePassSuccess">
+                        <p style="color: red">Đổi mật khấu thành công</p>
+                      </div>
+                    </div>
+                    <div class="row" style="margin-top: 50px">
+                      <div class="col-md-4">
+                        <div class="row">
+                          <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Xác nhận đổi mật khẩu"/>
+                        </div>
+                      </div>
+                    </div>
+                  </form>
+
+                </div>
+                <div *ngIf="!editProfile">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>Họ tên</label>
+                    </div>
+                    <div class="col-md-6">
+                      <input type="text" [(ngModel)]="userDetail.name" name="name">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>Địa chỉ</label>
+                    </div>
+                    <div class="col-md-6">
+                      <input type="text" [(ngModel)]="userDetail.address" name="address">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>Email</label>
+                    </div>
+                    <div class="col-md-6">
+                      <input type="text" [(ngModel)]="userDetail.email" name="email">
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label>Số điện thoại</label>
+                    </div>
+                    <div class="col-md-6">
+                      <input type="text"  [(ngModel)]="userDetail.tel" name="tel">
+                    </div>
+                  </div>
+                  <div class="row" style="margin-top: 50px">
+                    <div class="col-md-4">
+                      <div class="row">
+                        <input type="submit" (click)="editSuccess()" class="profile-edit-btn" name="btnAddMore" value="Xác nhận chỉnh sửa"/>
+                      </div>
+                    </div>
+                    <div class="col-md-4">
+                      <div class="row">
+                        <input type="submit" (click)="cancelEdit()" class="profile-edit-btn" name="btnAddMore" value="Huỷ bỏ"/>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="row" style="margin-bottom: 20px">
+                  <div class="col-md-4">
+                  </div>
+                  <div class="col-md-3">
+                    <button (click)="listSong()" class="profile-edit-btn" name="btnAddMore">Xem danh sách bài hát</button>
+                  </div>
+                  <div class="col-md-3">
+                    <button (click)="addSong()" class="profile-edit-btn" name="btnAddMore">Thêm bài hát</button>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="profile-tab">
+                <button (click)="createPlayList()" class="profile-edit-btn" name="btnAddMore">Tạo playlist</button>
+                <button (click)="listPlayList()" class="profile-edit-btn" name="btnAddMore">Xem danh sách playlist</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </header>
+</div>
+
+
+<app-footer></app-footer>

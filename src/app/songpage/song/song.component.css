@@ -1,0 +1,86 @@
+html {
+  background: white;
+}
+
+h1 {
+  color: white;
+  font-weight: normal;
+  font-size: 1.5em;
+}
+
+/*-- --*/
+.container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.container.flex-start {
+  justify-content: flex-start;
+}
+
+.container.flex-end {
+  justify-content: flex-end;
+}
+
+.container.center {
+  justify-content: center;
+}
+
+.container.space-between {
+  justify-content: space-between;
+}
+
+.container.space-around {
+  justify-content: space-around;
+}
+
+.item {
+  font-size: 2rem;
+  line-height: 1;
+  text-align: left;
+  padding: 30px 5px 30px 5px;
+  background: white;
+  border: 0px solid tomato;
+  color: black;
+  margin: 2px;
+}
+
+div.a {
+  white-space: nowrap;
+  width: 180px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  border: 0px solid #000000;
+  position: relative;
+}
+
+.tooltipp {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltipp .tooltiptextt {
+  visibility: hidden;
+  background-color: white;
+  color: black;
+  text-align: center;
+  border-radius: 0px;
+  padding: 5px;
+  border: 1px solid;
+  position: absolute;
+  top: 20px;
+  left: 10px;
+  z-index: 1;
+}
+
+.tooltipp:hover .tooltiptextt {
+  visibility: visible;
+}
+.lyric{
+  width: 500px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+

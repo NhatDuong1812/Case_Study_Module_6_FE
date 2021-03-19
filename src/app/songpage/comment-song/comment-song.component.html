@@ -1,0 +1,56 @@
+<div class="comments-app">
+  <h1>Bình luận</h1>
+  <!--  <p>&#128512;</p>-->
+
+  <!-- Comments List -->
+
+  <div class="comments">
+    <div *ngIf="!currentUser">
+      <p>Hãy <a href="/login">đăng nhập</a> để bình luận. Nếu chưa có tài khoản hãy <a href="/register">đăng kí</a></p>
+    </div>
+    <div class="comment-form">
+      <!-- Comment Avatar -->
+      <div class="comment-avatar" *ngIf="currentUser">
+        <img src="{{avatar}}" alt="">
+      </div>
+
+      <form class="form" name="form" *ngIf="currentUser" (ngSubmit)="postComment()">
+        <div class="form-row">
+          <textarea [(ngModel)]="commentSong.content" name="content"
+                    class="input"
+                    placeholder="Viết bình luận..."
+          ></textarea>
+        </div>
+        <div class="form-row">
+          <input style="font-size: 20px; background: dodgerblue" type="submit" value="Đăng">
+        </div>
+      </form>
+
+    </div>
+    <h2 style="color: blue; margin-left: 5px">Mới nhất</h2>
+    <div class="comment" [(ngModel)]="listCommentSong" *ngFor="let comment of listCommentSong; let i = index">
+      <!-- Comment Avatar -->
+      <div class="comment-avatar">
+        <img src="{{userDetails[i].avatar}}">
+      </div>
+
+      <!-- Comment Box -->
+      <div class="comment-box">
+        <div class="comment-text">{{comment.content}}</div>
+        <div class="comment-footer">
+          <div class="comment-info">
+            <span class="comment-author">
+              <a href="mailto:sexar@pagelab.io">{{comment.user.username}}</a>
+            </span>
+            <span class="comment-date">{{comment.creationTime.substring(0,10) + " - " + comment.creationTime.substring(11,19)}}</span>
+          </div>
+
+          <div class="comment-actions">
+            <!--            <a href="#">Reply</a>-->
+          </div>
+        </div>
+      </div>
+    </div>
+    <button type="button" (click)="showMore()" style="float: right; margin-bottom: 17px" class="btn btn-link">Xem thêm...</button>
+  </div>
+</div>

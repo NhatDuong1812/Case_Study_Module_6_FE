@@ -1,0 +1,19 @@
+<div class="card-body">
+  <div class="slider slider-for2">
+  </div>
+  <div class="slider slider-nav2">
+    <div style="margin-left: 90px" *ngFor="let playlist of listPlaylistMostLike; let i = index">
+        <div class="row">
+          <div class="col-md-5" style="padding: 0">
+            <img style="" width="150px" height="150px" src="{{playlist.avatar}}" alt="">
+          </div>
+          <div class="col-md-7" style="margin-right: 0px">
+            <h4 style="color: blue; font-size: 18px; margin: 0"><strong>{{playlist.name}}</strong></h4>
+            <strong style="color: red"><i class="fas fa-heart" style="margin-right: 5px"></i>{{listPlaylistLikeNumber[i]}}</strong>
+            <div style="margin: 40px"></div>
+            <strong style="font-size: 50px; color: red">#{{i+1}}</strong>
+          </div>
+        </div>
+    </div>
+  </div>
+</div>

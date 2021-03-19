@@ -12,7 +12,7 @@ const API_URL = `${environment.apiUrl}`;
 export class CommentSongService {
 
   currentUser : any;
-  constructor(private authService : AuthService,private http: HttpClient) {
+  constructor(private authService: AuthService,private http: HttpClient) {
     this.authService.currentUserSubject.subscribe(value => {
       this.currentUser = value;
       if(this.currentUser){

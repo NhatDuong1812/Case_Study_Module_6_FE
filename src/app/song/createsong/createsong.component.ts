@@ -7,6 +7,7 @@ import {singer} from '../../model/singer';
 import {finalize} from 'rxjs/operators';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../../service/auth/auth.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-createsong',
@@ -25,8 +26,15 @@ export class CreatesongComponent implements OnInit {
   username : any;
   createSuccess = false;
 
+  audioFile: File = null;
+  downloadURL: Observable<string>;
 
-  constructor(private activatedRoute : ActivatedRoute, private authService : AuthService, private route: Router, private songService : SongService, private storage : AngularFireStorage, private singerService : SingerService) {
+  constructor(private activatedRoute : ActivatedRoute,
+              private authService : AuthService,
+              private route: Router,
+              private songService : SongService,
+              private storage : AngularFireStorage,
+              private singerService : SingerService) {
     this.authService.currentUserSubject.subscribe(value => {
       this.currentUser = value;
     })
@@ -37,6 +45,39 @@ export class CreatesongComponent implements OnInit {
       this.username = paramMap.get('username');
       console.log(this.username)
     })
+  }
+
+  getFile(event){
+    this.audioFile = event.target.files[0];
+    console.log(this.audioFile);
+  }
+
+  uploadFile(){
+    var n = Date.now();
+    const file = this.audioFile
+    const filePath = `Sound/${n}`;
+    const fileRef = this.storage.ref(filePath);
+    const task = this.storage.upload(`Sound/${n}`, file);
+    task
+      .snapshotChanges()
+      .pipe(
+        finalize(() => {
+          this.downloadURL = fileRef.getDownloadURL();
+          this.downloadURL.subscribe(url => {
+            if (url) {
+              this.fileSrc = url;
+            }
+            console.log(this.fileSrc);
+            this.createSuccess = true;
+            this.createSong();
+          });
+        })
+      )
+      .subscribe(url => {
+        if (url) {
+          console.log(url);
+        }
+      });
   }
   createSong(){
     return this.songService.createSong(this.song, this.currentUser.username).toPromise();
@@ -49,7 +90,7 @@ export class CreatesongComponent implements OnInit {
       finalize(() => {
         fileRef.getDownloadURL().subscribe(async url => { // Lay duong dan tren anh
           this.song.avatar = url;
-          await this.submitFile(); 
+          await this.uploadFile();
           this.createSuccess = false;
         });
       })

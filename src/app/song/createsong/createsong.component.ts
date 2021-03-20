@@ -65,11 +65,10 @@ export class CreatesongComponent implements OnInit {
           this.downloadURL = fileRef.getDownloadURL();
           this.downloadURL.subscribe(url => {
             if (url) {
-              this.fileSrc = url;
+              this.song.file = url;
+              this.createSuccess = true;
+              this.createSong();
             }
-            console.log(this.fileSrc);
-            this.createSuccess = true;
-            this.createSong();
           });
         })
       )
@@ -96,20 +95,7 @@ export class CreatesongComponent implements OnInit {
       })
     ).subscribe();
   }
-  // tslint:disable-next-line:typedef
-  submitFile(){ // Tai file nhac len firebase, lua duong dan vao db.
-    const filePathFile = `${this.song.name}/${this.selectedFile.name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`;
-    const fileRef = this.storage.ref(filePathFile);
-    this.storage.upload(filePathFile, this.selectedFile).snapshotChanges().pipe(
-      finalize(() => {
-        fileRef.getDownloadURL().subscribe(async url => { // Lay duong dan tren file
-          this.song.file = url;
-          await this.createSong();
-          this.createSuccess = true;
-        });
-      })
-    ).subscribe();
-  }
+
   // tslint:disable-next-line:typedef
   showPreview(event: any){
     if (event.target.files && event.target.files[0]){

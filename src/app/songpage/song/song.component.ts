@@ -19,7 +19,12 @@ import {userdetail} from '../../model/userdetail';
   styleUrls: ['./song.component.css']
 })
 export class SongComponent implements OnInit {
-  singleTrack: Track[] = [];
+  singleTrack: Track[] = [
+    {
+      title: '',
+      link: ''
+    }
+  ];
   singers: singer[] = [];
   showFullLyric = true;
   song: song = {

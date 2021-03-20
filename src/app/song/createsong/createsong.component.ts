@@ -49,7 +49,7 @@ export class CreatesongComponent implements OnInit {
       finalize(() => {
         fileRef.getDownloadURL().subscribe(async url => { // Lay duong dan tren anh
           this.song.avatar = url;
-          await this.submitFile();
+          await this.submitFile(); 
           this.createSuccess = false;
         });
       })
@@ -91,4 +91,5 @@ export class CreatesongComponent implements OnInit {
   cancel(){
     this.route.navigate(["/listsong/" + this.currentUser.username]);
   }
+
 }

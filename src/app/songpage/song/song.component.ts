@@ -21,8 +21,8 @@ import {userdetail} from '../../model/userdetail';
 export class SongComponent implements OnInit {
   singleTrack: Track[] = [
     {
-      link: '',
-      title: ''
+      title: '',
+      link: ''
     }
   ];
   singers: singer[] = [];

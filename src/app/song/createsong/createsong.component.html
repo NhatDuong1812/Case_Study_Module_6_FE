@@ -42,7 +42,7 @@
                         <label>File nhạc</label>
                       </div>
                       <div class="col-md-10">
-                        <input type="file"  [(ngModel)]="song.file" name="file" (change)="showPreviewFile($event)">
+                        <input type="file"  name="file" (change)="getFile($event)" accept="audio/mp3, audio/m4a" required>
                       </div>
                     </div>
                     <div class="row" style="margin-bottom: 25px">
@@ -51,7 +51,7 @@
                       </div>
                       <tr>
                         <td><label for="avatar"></label></td>
-                        <td><input type="file" [(ngModel)]="song.avatar" name="avatar" id="avatar" (change)="showPreview($event)"></td>
+                        <td><input type="file" [(ngModel)]="song.avatar" name="avatar" id="avatar" (change)="showPreview($event)" accept="image/png, image/jpg"></td>
                       </tr>
                     </div>
                     <div class="row" style="margin-bottom: 25px">

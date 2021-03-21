@@ -1,4 +1,33 @@
-
+@-webkit-keyframes my {
+  0% { color: #F8CD0A; }
+  50% { color: #B8860B; }
+  100% { color: #F8CD0A; }
+  }
+  @-moz-keyframes my {
+  0% { color: #F8CD0A; }
+  50% { color: #B8860B; }
+  100% { color: #F8CD0A; }
+  }
+  @-o-keyframes my {
+  0% { color: #F8CD0A; }
+  50% { color: #B8860B; }
+  100% { color: #F8CD0A; }
+  }
+  @keyframes my {
+  0% { color: #F8CD0A; }
+  50% { color: #B8860B; }
+  100% { color: #F8CD0A; }
+  }
+  .test {
+  background:#ffffff;
+  font-size:24px;
+  font-weight:bold;
+  -webkit-animation: my 700ms infinite;
+  -moz-animation: my 700ms infinite;
+  -o-animation: my 700ms infinite;
+  animation: my 700ms infinite;
+  }
+  
 
 
 /*carosel*/
@@ -61,3 +90,36 @@ h3 {
 .action a:hover{
   background:#000;
 }
+
+@-webkit-keyframes my1 {
+  0% { color: #F8CD0A; }
+  50% { color: #DC143C; }
+  100% { color: #F8CD0A; }
+  }
+  @-moz-keyframes my1 {
+  0% { color: #F8CD0A; }
+  50% { color: #DC143C; }
+  100% { color: #F8CD0A; }
+  }
+  @-o-keyframes my1 {
+  0% { color: #F8CD0A; }
+  50% { color: #DC143C; }
+  100% { color: #F8CD0A; }
+  }
+  @keyframes my1 {
+  0% { color: #F8CD0A; }
+  50% { color: #DC143C; }
+  100% { color: #F8CD0A; }
+  }
+  .test1 {
+    background:#0000008;
+    font-size : 24px;
+    font-weight:bold;
+    -webkit-animation: my1 700ms infinite;
+    -moz-animation: my1 700ms infinite;
+    -o-animation: my1 700ms infinite;
+    animation: my1 700ms infinite;
+    }
+
+    
+    

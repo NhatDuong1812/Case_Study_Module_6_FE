@@ -29,7 +29,7 @@
 <div class="main" style="width: 82%; height: auto; margin: 0 auto">
   <div class="card">
     <div class="card-header">
-      <span class="h4">Playlist mới</span>
+      <span  class="test1">Playlist mới</span>
     </div>
     <div class="card-body">
       <div class="slider slider-for">
@@ -38,8 +38,8 @@
 
         <div *ngFor="let playlist of listPlaylistNew">
           <a href="playlists/display/{{playlist.id}}">
-            <h3><img src="{{playlist.avatar}}" width="200px" height="200px"></h3>
-            <p style="margin-left: 20px; color: black">{{playlist.name}}</p>
+            <h3><img src="{{playlist.avatar}}" width="200px" height="200px" ></h3>
+            <p class="test" style="margin-left: 20px; color: black">{{playlist.name}}</p>
           </a>
         </div>
       </div>
@@ -136,7 +136,7 @@
         <div class="col-md-10">
           <div class="card">
             <div class="card-header">
-              <span class="h4">Yêu thích nhất</span>
+              <span class="test1">Yêu thích nhất</span>
             </div>
             <div class="card-body">
               <app-song-most-like></app-song-most-like>

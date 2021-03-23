@@ -87,7 +87,7 @@
               <b style="margin: 25px 30px 20px 20px; color: red; font-size: 25px">{{i+1}}</b>
               <img src="{{song.avatar}}" class="mr-3 rounded" width="85" alt="...">
               <div class="media-body">
-                <h4 class="mt-0 mb-1"><a routerLink="['/song/'+song.id]">{{song.name}}</a></h4>
+                <h4 class="mt-0 mb-1"><a routerLink="/song/{{song.id}}">{{song.name}}</a></h4>
                 <small>{{song.author}}</small>
                 <br>
                 <strong style="color: red"><i class="fas fa-headphones-alt" style="margin-right: 5px"></i>{{song.numberOfView}}</strong>
@@ -159,6 +159,3 @@
   </div>
 </div>
 <app-footer></app-footer>
-
-
-

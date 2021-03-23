@@ -11,9 +11,6 @@ import { HomepageComponent } from './user/homepage/homepage.component';
 })
 export class AppComponent {
 
-  @ViewChild(NewSongsComponent) newSong;
-  @ViewChild(HomepageComponent) homePage;
-
   songId;
 
   constructor(private data: DataServiceService){}

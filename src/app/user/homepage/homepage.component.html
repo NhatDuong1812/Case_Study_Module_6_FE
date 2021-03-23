@@ -87,13 +87,13 @@
               <b style="margin: 25px 30px 20px 20px; color: red; font-size: 25px">{{i+1}}</b>
               <img src="{{song.avatar}}" class="mr-3 rounded" width="85" alt="...">
               <div class="media-body">
-                <h4 class="mt-0 mb-1"><a [routerLink]="['/song/'+song.id]">{{song.name}}</a></h4>
+                <h4 class="mt-0 mb-1"><a routerLink="['/song/'+song.id]">{{song.name}}</a></h4>
                 <small>{{song.author}}</small>
                 <br>
                 <strong style="color: red"><i class="fas fa-headphones-alt" style="margin-right: 5px"></i>{{song.numberOfView}}</strong>
               </div>
-              <a [routerLink]="['/song/'+song.id]" class="px-2 py-1 mr-2 bg-success text-white" title="Play"><i class="fas fa-play"></i></a>
-               <a href="#" class="px-2 py-1 bg-danger text-white" song-id="1" title="Thích"><i class="far fa-heart"></i></a> 
+              <a routerLink="['/song/'+song.id]" class="px-2 py-1 mr-2 bg-success text-white" title="Play"><i class="fas fa-play"></i></a>
+               <!-- <a href="#" class="px-2 py-1 bg-danger text-white" song-id="1" title="Thích"><i class="far fa-heart"></i></a>  -->
             </li>
           </ul>
           <ul *ngIf="showPlaylistLike" class="list-unstyled">
@@ -109,7 +109,7 @@
       <div class="row">
         <div class="col-md-1 d-none d-md-block">
         </div>
-        <!--- menu left -->
+<!--        - menu left -->
 
             <div class="col-md-2 d-none d-md-block">
               <div class="card">

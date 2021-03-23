@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Playlist} from '../../model/playlist';
 import {PlaylistService} from '../../service/playlist/playlist.service';
 import {song} from '../../model/song';
@@ -16,6 +16,13 @@ export class HomepageComponent implements OnInit {
   showPlaylistLike = false;
   listPlaylistNew : Playlist[] = [];
   listSongMostView10 : song[] = [];
+
+  songId:number;
+
+  getSongId(id:number){
+    this.songId = id;
+    console.log(this.songId);
+  }
   constructor(private playlistService: PlaylistService, private songService: SongService) {
   }
 

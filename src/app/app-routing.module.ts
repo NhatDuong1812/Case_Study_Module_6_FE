@@ -20,6 +20,7 @@ import {PlayPlaylistComponent} from './playlist/play-playlist/play-playlist.comp
 import {UpdatePlaylistComponent} from './playlist/update-playlist/update-playlist.component';
 import {SearchPlaylistComponent} from './playlist/search-playlist/search-playlist.component';
 import {ListsongPlaylistComponent} from './playlist/listsong-playlist/listsong-playlist.component';
+import {CreateSingerComponent} from "./singer/create-singer/create-singer.component";
 
 const routes: Routes = [
 
@@ -93,6 +94,13 @@ const routes: Routes = [
     path: 'listsongs-playlist/:username/:id',
     component: ListsongPlaylistComponent
   },
+  {
+    path: 'create-singer/:username',
+    component: CreateSingerComponent
+  }, {
+    path: 'list-singer/:username',
+    component: ListPlaylistComponent
+  }
 ];
 
 @NgModule({

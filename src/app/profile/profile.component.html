@@ -31,6 +31,9 @@
                 <li class="nav-item">
                   <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Playlist</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="singer-tab" data-toggle="tab" href="#singer" role="tab" aria-controls="singer" aria-selected="false">Ca sĩ</a>
+                </li>
               </ul>
             </div>
           </div>
@@ -189,8 +192,28 @@
                 </div>
               </div>
               <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="profile-tab">
-                <button (click)="createPlayList()" class="profile-edit-btn" name="btnAddMore">Tạo playlist</button>
-                <button (click)="listPlayList()" class="profile-edit-btn" name="btnAddMore">Xem danh sách playlist</button>
+                <div class="row" style="margin-bottom: 20px">
+                  <div class="col-md-4">
+                  </div>
+                  <div class="col-md-3">
+                    <button (click)="listPlayList()" class="profile-edit-btn" name="btnAddMore">Xem danh sách playlist</button>
+                  </div>
+                  <div class="col-md-3">
+                    <button (click)="createPlayList()" class="profile-edit-btn" name="btnAddMore">Tạo playlist</button>
+                  </div>
+                </div>
+              </div>
+              <div class="tab-pane fade" id="singer" role="tabpanel" aria-labelledby="profile-tab">
+                <div class="row" style="margin-bottom: 20px">
+                  <div class="col-md-4">
+                  </div>
+                  <div class="col-md-3">
+                    <button (click)="listPlayList()" class="profile-edit-btn" name="btnAddMore">Xem danh sách ca sĩ</button>
+                  </div>
+                  <div class="col-md-3">
+                    <button (click)="addSinger()" class="profile-edit-btn" name="btnAddMore">Tạo mới ca sĩ</button>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

@@ -137,7 +137,7 @@ export class ProfileComponent implements OnInit {
     this.route.navigate(["/createsong/" + this.currentUser.username]);
   }
   addSinger(){
-    this.route.navigate(["/createsinger/" + this.currentUser.username]);
+    this.route.navigate(["/create-singer/" + this.currentUser.username]);
   }
   listSong(){
     this.route.navigate(["/listsong/" + this.currentUser.username]);

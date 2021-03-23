@@ -4,6 +4,8 @@ import {ActivatedRoute} from "@angular/router";
 import {song} from "../../model/song";
 import {Playlist} from '../../model/playlist';
 import {PlaylistService} from '../../service/playlist/playlist.service';
+import {SingerService} from "../../service/singer/singer.service";
+import {singer} from "../../model/singer";
 
 @Component({
   selector: 'app-search-song',
@@ -14,10 +16,12 @@ export class SearchSongComponent implements OnInit {
   keyword: any;
   songs: song[] = [];
   playlists: Playlist[] = [];
+  singer: singer[] = [];
 
   constructor(private songService: SongService,
               private activatedRoute: ActivatedRoute,
-              private playlistService: PlaylistService) {
+              private playlistService: PlaylistService,
+              private singerService: SingerService) {
     this.activatedRoute.paramMap.subscribe(async paramMap => {
       this.keyword = paramMap.get('keyword');
       this.getListPlayList(this.keyword);
@@ -39,5 +43,10 @@ export class SearchSongComponent implements OnInit {
       this.playlists = value1;
     });
   }
-
+  // tslint:disable-next-line:typedef
+  getListSinger(keyword: string){
+    return this.singerService.findAllByNameContains(keyword).subscribe(value => {
+      this.singer = value;
+    });
+  }
 }

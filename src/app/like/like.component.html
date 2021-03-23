@@ -1,0 +1,9 @@
+<div class="like-container">
+  <button style="text-line-through-color: red" (click)="isCheckStatus()"  >
+    <i  class="fas fa-heart fa-large"  style="color: red" [hidden]="!isCheck"></i>
+    <i  class="far fa-heart fa-large"   [hidden]= "isCheck"  ></i>
+   <span [style.--text--color]="isCheck ? 'red' : 'black' " [style]="{color: 'var(--text--color)'}"> Like</span>
+  </button>
+</div>
+
+

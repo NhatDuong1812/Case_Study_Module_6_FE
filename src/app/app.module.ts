@@ -42,6 +42,7 @@ import {PlayPlaylistComponent} from "./playlist/play-playlist/play-playlist.comp
 import { ListsongPlaylistComponent } from './playlist/listsong-playlist/listsong-playlist.component';
 import {SearchPlaylistComponent} from "./playlist/search-playlist/search-playlist.component";
 import { CommentPlaylistComponent } from './comment-playlist/comment-playlist.component';
+import { LikeComponent } from './like/like.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +77,8 @@ import { CommentPlaylistComponent } from './comment-playlist/comment-playlist.co
     PlayPlaylistComponent,
     ListsongPlaylistComponent,
     SearchPlaylistComponent,
-    CommentPlaylistComponent
+    CommentPlaylistComponent,
+    LikeComponent
   ],
   imports: [
     BrowserModule,

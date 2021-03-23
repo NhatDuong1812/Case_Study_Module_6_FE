@@ -5,7 +5,7 @@
         <img src="{{playlist.avatar}}" class="mr-3 rounded" width="85" height="85" alt="...">
       </div>
       <div class="media-body">
-        <h3 class="mt-0 mb-1"><a href="playlists/display/{{playlist.id}}">{{playlist.name}}</a></h3>
+        <h3 class="mt-0 mb-1"><a routerLink="playlists/display/{{playlist.id}}">{{playlist.name}}</a></h3>
         <small>{{userdatas[i].name}}</small>
         <br>
         <strong style="color: red"><i class="fas fa-headphones-alt" style="margin-right: 5px"></i>{{playlist.view}}</strong>

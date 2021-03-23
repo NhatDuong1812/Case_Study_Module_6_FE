@@ -18,6 +18,8 @@ export class RegisterComponent implements OnInit {
   validateEmail = true;
   validateTel = true;
   validateAddress = true;
+  createSuccess = false;
+  logindisplay = false;
 
   listUser: User[] = [] ;
   listUserName: string[] = [];
@@ -56,7 +58,9 @@ export class RegisterComponent implements OnInit {
                 // this.router.navigate(["/login"]);
 
               });
-              this.router.navigate(["login"]);
+              // this.router.navigate(["login"]);
+              this.createSuccess = true;
+              this.logindisplay = true;
             }else {
               this.validateTel = false;
             }

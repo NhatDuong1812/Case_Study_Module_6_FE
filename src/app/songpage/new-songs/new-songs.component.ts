@@ -8,8 +8,15 @@ import {SongService} from '../../service/song/song.service';
   styleUrls: ['./new-songs.component.css']
 })
 export class NewSongsComponent implements OnInit {
-listLatestSongs: song[] = [];
+
+  songId:any;
+
+  listLatestSongs: song[] = [];
   constructor(private songService: SongService) { }
+
+  getSongId(id:Number){
+    this.songId = id;
+  }
 
   ngOnInit(): void {
     this.songService.getLatest().subscribe(listSongs => {

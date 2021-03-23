@@ -26,8 +26,15 @@ export class CreatesongComponent implements OnInit {
   username : any;
   createSuccess = false;
 
-  audioFile: File = null;
+  maxProgress = 100;
+  maxLoading = 70;
+  progressLoading = 0;
+  myBar = 'width: 0%';
+  loadFlag = true;
+  audioFile: File;
   downloadURL: Observable<string>;
+
+  elem = document.getElementById("myBar") as HTMLElement;
 
   constructor(private activatedRoute : ActivatedRoute,
               private authService : AuthService,
@@ -44,7 +51,8 @@ export class CreatesongComponent implements OnInit {
     this.activatedRoute.paramMap.subscribe(async paramMap => {
       this.username = paramMap.get('username');
       console.log(this.username)
-    })
+    });
+
   }
 
   getFile(event){
@@ -68,6 +76,8 @@ export class CreatesongComponent implements OnInit {
               this.song.file = url;
               this.createSuccess = true;
               this.createSong();
+              this.progressLoading == this.maxProgress;
+              this.myBar = `width:  ${this.maxProgress}%`;
             }
           });
         })
@@ -75,9 +85,23 @@ export class CreatesongComponent implements OnInit {
       .subscribe(url => {
         if (url) {
           console.log(url);
+          if (this.progressLoading <= this.maxLoading){
+            this.progressLoading+=5;
+            this.myBar = `width:  ${this.progressLoading}%`;
+          }
         }
       });
   }
+
+  // loadingBar(){
+  //   for(let i = 0; i <= this.maxLoading; i++){
+  //     this.progressLoading +=i;
+  //     console.log(i);
+  //     this.myBar = `width:  ${this.progressLoading}%`;
+  //     if(this.progressLoading == this.maxLoading) break;
+  //   }
+  // }
+
   createSong(){
     return this.songService.createSong(this.song, this.currentUser.username).toPromise();
   }

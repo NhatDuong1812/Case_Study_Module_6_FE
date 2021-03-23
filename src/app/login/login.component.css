@@ -4,12 +4,11 @@
 .container{
   height: 100%;
   width: border-box;
-  align-content: center;
-  background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
+  align-content: space-around;
+  background-image: url('https://cdn.tgdd.vn/2020/05/content/top-5-ung-dung-nghe-nhac-chat-luong-mien-phi-pho-bien-tai-viet-nam-background-800x450.jpg');
   background-size: cover;
   background-repeat: no-repeat;
   font-family: 'Numans', sans-serif;
-
 }
 
 .card{

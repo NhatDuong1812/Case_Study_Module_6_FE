@@ -3,6 +3,7 @@ import {Playlist} from '../../model/playlist';
 import {PlaylistService} from '../../service/playlist/playlist.service';
 import {song} from '../../model/song';
 import {SongService} from '../../service/song/song.service';
+import { DataServiceService } from 'src/app/service/data/data-service.service';
 
 declare var $: any;
 
@@ -19,11 +20,14 @@ export class HomepageComponent implements OnInit {
 
   songId:number;
 
-  getSongId(id:number){
+  getSongId(id:any){
     this.songId = id;
     console.log(this.songId);
+    this.data.changeMessage(id);
   }
-  constructor(private playlistService: PlaylistService, private songService: SongService) {
+  constructor( private playlistService: PlaylistService,
+               private songService: SongService,
+               private data: DataServiceService) {
   }
 
   ngOnInit(): void {

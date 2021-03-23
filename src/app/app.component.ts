@@ -1,5 +1,6 @@
 import { Component, SimpleChanges, ViewChild } from '@angular/core';
 import * as $ from 'jquery';
+import { DataServiceService } from './service/data/data-service.service';
 import { NewSongsComponent } from './songpage/new-songs/new-songs.component';
 import { HomepageComponent } from './user/homepage/homepage.component';
 
@@ -15,11 +16,10 @@ export class AppComponent {
 
   songId;
 
-  ngOnChange(changes: SimpleChanges){
-    console.log(this.homePage.songId);
-    this.songId =  this.homePage.songId;
-  }
+  constructor(private data: DataServiceService){}
 
-  title = 'project6';
+  ngOnInit(){
+    this.data.currentMessage.subscribe(id => this.songId = +id);
+  }
 
 }

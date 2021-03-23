@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {userdetail} from '../model/userdetail';
-import {UserdetailService} from '../service/userdetail/userdetail.service';
-import {User} from '../model/user';
-import {Router} from '@angular/router';
-import {Customer} from '../model/customer';
+import { userdetail } from '../model/userdetail';
+import { UserdetailService } from '../service/userdetail/userdetail.service';
+import { User } from '../model/user';
+import { Router } from '@angular/router';
+import { Customer } from '../model/customer';
 
 @Component({
   selector: 'app-register',
@@ -19,51 +19,50 @@ export class RegisterComponent implements OnInit {
   validateTel = true;
   validateAddress = true;
 
-  listUser : User[] = [] ;
+  listUser: User[] = [];
   listUserName: string[] = [];
 
-  customer: Customer ={};
+  customer: Customer = {};
 
   constructor(private userdetailservice: UserdetailService, private router: Router) { }
 
   ngOnInit(): void {
-    this.userdetailservice.getAllUser().subscribe(listUser =>{
-        this.listUser = listUser;
+    this.userdetailservice.getAllUser().subscribe(listUser => {
+      this.listUser = listUser;
     })
   }
 
   // tslint:disable-next-line:typedef
-  register(){
-    if ((this.customer.name + '').length > 0 && this.customer.name != undefined){
+  register() {
+    if ((this.customer.name + '').length > 0 && this.customer.name != undefined) {
       this.validateName = true
-      if ((this.customer.username + '').length > 5 && this.customer.username != undefined){
-        for (let i =0 ; i < this.listUser.length; i++){
-          if (this.customer.username == this.listUser[i].username){
+      if ((this.customer.username + '').length > 5 && this.customer.username != undefined) {
+        for (let i = 0; i < this.listUser.length; i++) {
+          if (this.customer.username == this.listUser[i].username) {
             this.validateUsername = false;
             break;
-          }else {
+          } else {
             this.validateUsername = true;
           }
         }
-        if (this.validateUsername){
-          if ((this.customer.password + '').length > 5 && this.customer.password != undefined){
+        if (this.validateUsername) {
+          if ((this.customer.password + '').length > 5 && this.customer.password != undefined) {
             this.validatePassword = true;
-            if (((this.customer.tel + '').length > 7 && (this.customer.tel + '').length < 12) || this.customer.tel == undefined){
+            if (((this.customer.tel + '').length > 7 && (this.customer.tel + '').length < 12) || this.customer.tel == undefined) {
               this.validateTel = true;
-              this.userdetailservice.createNewCustomer(this.customer).subscribe(() =>{
-                this.router.navigate(["/login"]);
-              })
-            }else {
+              this.userdetailservice.createNewCustomer(this.customer).subscribe(() => {
+                this.router.navigate(["/login"]);              })
+            } else {
               this.validateTel = false;
             }
-          }else {
+          } else {
             this.validatePassword = false;
           }
         }
-      }else {
+      } else {
         this.validateUsername = false;
       }
-    }else {
+    } else {
       this.validateName = false;
     }
 

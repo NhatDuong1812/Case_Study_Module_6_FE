@@ -27,7 +27,6 @@ export class SearchSongComponent implements OnInit {
       this.keyword = paramMap.get('keyword');
       this.getListPlayList(this.keyword);
       this.getListSong(this.keyword);
-      this.getListSinger(this.keyword);
     });
   }
 

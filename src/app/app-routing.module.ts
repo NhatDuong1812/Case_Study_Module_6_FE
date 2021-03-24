@@ -21,6 +21,8 @@ import {UpdatePlaylistComponent} from './playlist/update-playlist/update-playlis
 import {SearchPlaylistComponent} from './playlist/search-playlist/search-playlist.component';
 import {ListsongPlaylistComponent} from './playlist/listsong-playlist/listsong-playlist.component';
 import {CreateSingerComponent} from "./singer/create-singer/create-singer.component";
+import {ListSingerComponent} from "./singer/list-singer/list-singer.component";
+import {EditSingerComponent} from "./singer/edit-singer/edit-singer.component";
 
 const routes: Routes = [
 
@@ -99,7 +101,11 @@ const routes: Routes = [
     component: CreateSingerComponent
   }, {
     path: 'list-singer/:username',
-    component: ListPlaylistComponent
+    component: ListSingerComponent
+  },
+  {
+    path: 'edit-singer/:username',
+    component: EditSingerComponent
   }
 ];
 

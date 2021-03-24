@@ -44,6 +44,7 @@ import {SearchPlaylistComponent} from "./playlist/search-playlist/search-playlis
 import { CommentPlaylistComponent } from './comment-playlist/comment-playlist.component';
 import { CreateSingerComponent } from './singer/create-singer/create-singer.component';
 import { EditSingerComponent } from './singer/edit-singer/edit-singer.component';
+import { ListSingerComponent } from './singer/list-singer/list-singer.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { EditSingerComponent } from './singer/edit-singer/edit-singer.component'
     SearchPlaylistComponent,
     CommentPlaylistComponent,
     CreateSingerComponent,
-    EditSingerComponent
+    EditSingerComponent,
+    ListSingerComponent
   ],
   imports: [
     BrowserModule,

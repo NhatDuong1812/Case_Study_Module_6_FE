@@ -1,0 +1,46 @@
+<app-header></app-header>
+<div class="container">
+  <header class="jumbotron">
+    <div class="container emp-profile" >
+      <form method="post">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="profile-head">
+              <h2 style="color: blue">
+                <strong>DANH SÁC CÁC CA SĨ</strong>
+              </h2>
+              <button (click)="addSinger()" class="profile-edit-btn" name="btnAddMore">Tạo Ca Sĩ</button>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="tab-content profile-tab" id="myTabContent">
+              <table class="table">
+                <thead>
+                <tr>
+                  <th scope="col">Thứ tự</th>
+                  <th scope="col">Ca sĩ</th>
+                  <th scope="col">Description</th>
+                  <th scope="col">Avatar</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let singer1 of listSinger; let i = index" >
+                  <th scope="row">{{i+1}}</th>
+<!--                  <td><a [routerLink]="['/song/'+song.id]">{{song.name}}</a></td>-->
+                  <td>{{singer1.name}}</td>
+                  <td>{{singer1.description}}</td>
+                  <td><img width="100" height="100" src="{{singer1.avatar}}" alt=""></td>
+                </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </header>
+</div>
+
+
+<app-footer></app-footer>
+

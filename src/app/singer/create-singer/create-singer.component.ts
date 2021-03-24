@@ -5,6 +5,7 @@ import {ActivatedRoute, Router} from "@angular/router";
 import {AuthService} from "../../service/auth/auth.service";
 import {AngularFireStorage} from "@angular/fire/storage";
 import {finalize} from "rxjs/operators";
+import {SingerService} from "../../service/singer/singer.service";
 
 @Component({
   selector: 'app-create-singer',
@@ -14,13 +15,14 @@ import {finalize} from "rxjs/operators";
 export class CreateSingerComponent implements OnInit {
 
   singer: singer = {};
+  singerList: singer[] = [];
   selectedImage: any = null;
   imgSrc: String = '';
   currentUser: any = null;
   username: any;
-  createSuccess = true;
+  createSuccess = false;
 
-  constructor( private songService: SongService,
+  constructor( private singerService: SingerService,
                private activatedRoute: ActivatedRoute,
                private authService: AuthService,
                private router:Router,
@@ -40,7 +42,7 @@ export class CreateSingerComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   createSinger(){
-    return this.songService.createSong(this.singer, this.currentUser).toPromise();
+    return this.singerService.createSinger(this.singer).toPromise();
   }
 
   // tslint:disable-next-line:typedef
@@ -57,6 +59,13 @@ export class CreateSingerComponent implements OnInit {
         });
       })
     ).subscribe();
+
+    // if (this.singer.name == null){
+    //   this.singer.name ="a";
+    // }else {
+    //   this.switchEditSinger(this.singer.name);
+    // }
+
   }
   showPreview(event: any){
     if (event.target.files && event.target.files[0]){
@@ -66,6 +75,17 @@ export class CreateSingerComponent implements OnInit {
     }else {
       this.selectedImage = null;
     }
+  }
+
+  switchEditSinger(name: string): void{
+
+     this.singerService.findAllByNameContains(name).subscribe(value => {
+      this.singerList = value;
+    });
+
+      this.singer = this.singerList[0];
+      let id = this.singer.id;
+      this.router.navigate(["/edit-singer/"+this.currentUser.username,this.singer.id]);
   }
   cancel(){
     this.router.navigate(["/profile"+ this.currentUser.username]);

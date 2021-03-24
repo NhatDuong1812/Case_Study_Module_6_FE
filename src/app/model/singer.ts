@@ -4,8 +4,8 @@ import {album} from "./album";
 export interface singer {
   id  ?: number;
   name?: string;
-  description?: string;
   avatar?: string;
+  description?: string;
   songs ?: song[];
-  albums?: album[];
+  // albums?: album[];
 }

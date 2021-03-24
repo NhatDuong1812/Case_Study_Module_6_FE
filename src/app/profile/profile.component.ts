@@ -148,4 +148,7 @@ export class ProfileComponent implements OnInit {
   listPlayList(){
     this.route.navigate(["/list-playlist/" + this.currentUser.username]);
   }
+  listSinger(){
+    this.route.navigate(["/list-singer/"+this.currentUser.username]);
+  }
 }

@@ -12,7 +12,9 @@ import {Route, Router} from '@angular/router';
 export class ListsongComponent implements OnInit {
   listSong : song[] = [];
   currentUser : any;
-  constructor(private songService : SongService, private authService : AuthService, private route : Router) {
+  constructor(private songService : SongService,
+              private authService : AuthService,
+              private route : Router) {
     this.authService.currentUserSubject.subscribe(value => {
       this.currentUser = value;
     })

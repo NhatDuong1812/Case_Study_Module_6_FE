@@ -1,1 +1,25 @@
-<p>edit-singer works!</p>
+<app-header></app-header>
+<form >
+  <div class="container rounded bg-white mt-5 mb-5"><span class="text-uppercase name" style="font-size: 20px">Information</span>
+    <div class="row">
+      <div class="col-md-5 border-right">
+        <div class="p-3 py-5">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-right">Singer Information</h4>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-12"><label class="labels">Name Singer</label><input type="text" class="form-control" name="name" [(ngModel)]="singer.name" disabled></div>
+          </div>
+          <div class="row mt-3">
+            <div class="col-md-12"><label class="labels">Description Singer</label><input type="text" class="form-control" name="name" [(ngModel)]="singer.description" disabled></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-3 border-right">
+      <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img [src] = "singer.avatar" style="width: 150px; height: auto; margin-top: 10px" alt="Anh dai dien" (click)="fileUploader.click()"><span class="font-weight-bold"></span><span class="text-black-50"></span><span> </span></div>
+    </div>
+  </div>
+</form>
+<app-listsong-playlist></app-listsong-playlist>
+<app-footer></app-footer>

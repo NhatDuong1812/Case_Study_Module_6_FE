@@ -20,7 +20,8 @@ export class HomepageComponent implements OnInit {
 
   showUp = false;
 
-  songId:number;
+  // @ts-ignore
+  songId: number;
 
   getSongId(id:any){
     this.songId = id;
@@ -61,6 +62,7 @@ export class HomepageComponent implements OnInit {
     })
 
   }
+  // tslint:disable-next-line:typedef
   songLike(){
     this.showSongLike = true;
     this.showPlaylistLike = false;

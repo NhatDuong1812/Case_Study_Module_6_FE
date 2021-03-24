@@ -26,6 +26,6 @@ export class ListSingerComponent implements OnInit {
     })
   }
   addSinger(){
-    this.route.navigate(['/create-singer'+ this.currentUser.username])
+    this.route.navigate(['/create-singer/'+ this.currentUser.username])
   }
 }

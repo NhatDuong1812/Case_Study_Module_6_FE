@@ -1,3 +1,22 @@
+<head>
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+
+  <script type="text/javascript">
+
+    var app = angular.module('ngpatternApp', []);
+
+    app.controller('ngpatternCtrl', function ($scope) {
+
+      $scope.sendForm = function () {
+
+        $scope.msg = "Form Validated";
+
+      };
+
+    });
+
+  </script>
+</head>
 <div class="container">
   <div class="d-flex justify-content-center h-100">
     <div class="card">
@@ -10,7 +29,7 @@
         </div>
       </div>
       <div class="card-body">
-        <form (ngSubmit)="register()">
+        <form (ngSubmit)="register()" name="personForm" novalidate ng-submit="personForm.$valid &&sendForm()" >
           <div class="input-group form-group">
             <div class="input-group-prepend">
               <span class="input-group-text"><i class="far fa-user"></i></span>
@@ -43,9 +62,12 @@
 
           <div class="input-group form-group">
             <div class="input-group-prepend">
-              <span class="input-group-text"><i class="fas fa-envelope-square"></i></span>
+              <span class="input-group-text"><i class="fas fa-key"></i></span>
             </div>
-            <input type="text" class="form-control" placeholder="Email | Không bắt buộc" name="password" [(ngModel)]="customer.email">
+            <input  type="text" class="form-control" id="email"name="email" placeholder="Email" [(ngModel)]="customer.email">
+            <div *ngIf="!createEmail">
+              <p style="color: red">Email invalid (hoangpham@fpt.com)</p>
+            </div>
           </div>
 
           <div class="input-group form-group">
@@ -57,6 +79,8 @@
               <p style="color: red">Số điện thoại quá ngắn hoặc quá dài, vui lòng nhập lại</p>
             </div>
           </div>
+
+<!--
 
           <div class="input-group form-group">
             <div class="input-group-prepend">

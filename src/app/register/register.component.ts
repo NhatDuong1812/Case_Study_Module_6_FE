@@ -4,6 +4,7 @@ import {UserdetailService} from '../service/userdetail/userdetail.service';
 import {User} from '../model/user';
 import {Router} from '@angular/router';
 import {Customer} from '../model/customer';
+import { Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -15,16 +16,20 @@ export class RegisterComponent implements OnInit {
   validateName = true;
   validateUsername = true;
   validatePassword = true;
-  validateEmail = true;
+  // validateEmail = true;
   validateTel = true;
   validateAddress = true;
   createSuccess = false;
   logindisplay = false;
+  createEmail = true;
+  // email = this.customer.email;
+
 
   listUser: User[] = [] ;
   listUserName: string[] = [];
 
   customer: Customer ={};
+
 
   constructor(private userdetailservice: UserdetailService, private router: Router) { }
 
@@ -34,10 +39,16 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+  validateEmail() {
+
+    const regularExpression = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
+    return regularExpression.test(String(this.customer.email).toLowerCase());
+  }
+
 
   register(){
     if ((this.customer.name + '').length > 0 && this.customer.name != undefined){
-      this.validateName = true
+      this.validateName = true;
       if ((this.customer.username + '').length > 5 && this.customer.username != undefined){
         for (let i = 0 ; i < this.listUser.length; i++){
           if (this.customer.username == this.listUser[i].username){
@@ -50,7 +61,9 @@ export class RegisterComponent implements OnInit {
         if (this.validateUsername){
           if ((this.customer.password + '').length > 5 && this.customer.password != undefined){
             this.validatePassword = true;
-            if (((this.customer.tel + '').length > 7 && (this.customer.tel + '').length < 12) || this.customer.tel == undefined){
+
+            if (((this.customer.tel + '').length > 7 && (this.customer.tel + '').length < 12) && (this.validateEmail()) && ((this.customer.email + '').length > 0)){
+              console.log((this.customer.email + '').length);
               this.validateTel = true;
               this.userdetailservice.createNewCustomer(this.customer).subscribe(() => {
                // alert("success");
@@ -61,8 +74,10 @@ export class RegisterComponent implements OnInit {
               // this.router.navigate(["login"]);
               this.createSuccess = true;
               this.logindisplay = true;
+              this.createEmail = true;
             }else {
               this.validateTel = false;
+              this.createEmail = false;
             }
           }else {
             this.validatePassword = false;

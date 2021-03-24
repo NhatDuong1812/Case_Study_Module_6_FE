@@ -42,6 +42,7 @@ import {PlayPlaylistComponent} from "./playlist/play-playlist/play-playlist.comp
 import { ListsongPlaylistComponent } from './playlist/listsong-playlist/listsong-playlist.component';
 import {SearchPlaylistComponent} from "./playlist/search-playlist/search-playlist.component";
 import { CommentPlaylistComponent } from './comment-playlist/comment-playlist.component';
+import {RouterLink} from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -92,6 +93,7 @@ import { CommentPlaylistComponent } from './comment-playlist/comment-playlist.co
     AngularFireDatabaseModule,
     BrowserAnimationsModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
+
   ],
   providers: [],
   bootstrap: [AppComponent]

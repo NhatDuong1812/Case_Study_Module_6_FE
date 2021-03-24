@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:8080',
+  apiUrl: 'http://localhost:8090',
   firebaseConfig : {
     apiKey: 'AIzaSyBgejqM4LjZ111lJEk82Iilfl39v5LNmfM',
     authDomain: 'fir-upload-file-b16ec.firebaseapp.com',

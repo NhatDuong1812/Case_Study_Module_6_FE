@@ -43,7 +43,7 @@
                       </div>
                       <tr>
                         <td><label for="avatar"></label></td>
-                        <td><input type="file" [(ngModel)]="song.avatar" name="avatar" id="avatar" (change)="showPreview($event)" #fileUploader></td>
+                        <td><input type="file" [(ngModel)]="song.avatar" name="avatar" id="avatar" (change)="showPreview($event)" #fileUploader accept="image/*"></td>
                         <img [src] = "song.avatar" style="width: 150px; height: auto" alt="Anh dai dien" (click)="fileUploader.click()" >
                       </tr>
                     </div>

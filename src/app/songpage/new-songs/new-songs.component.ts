@@ -19,6 +19,7 @@ export class NewSongsComponent implements OnInit {
   getSongId(id:any){
     this.songId = id;
     this.data.changeMessage(id);
+    this.data.changeShowUp("true");
   }
 
   ngOnInit(): void {

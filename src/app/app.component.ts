@@ -11,12 +11,6 @@ import { HomepageComponent } from './user/homepage/homepage.component';
 })
 export class AppComponent {
 
-  songId;
 
-  constructor(private data: DataServiceService){}
-
-  ngOnInit(){
-    this.data.currentMessage.subscribe(id => this.songId = +id);
-  }
 
 }

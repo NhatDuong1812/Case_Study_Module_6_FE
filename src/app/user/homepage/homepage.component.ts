@@ -18,19 +18,25 @@ export class HomepageComponent implements OnInit {
   listPlaylistNew : Playlist[] = [];
   listSongMostView10 : song[] = [];
 
+  showUp = false;
+
   songId:number;
 
   getSongId(id:any){
     this.songId = id;
     console.log(this.songId);
     this.data.changeMessage(id);
+    this.data.changeShowUp("true");
   }
   constructor( private playlistService: PlaylistService,
                private songService: SongService,
                private data: DataServiceService) {
   }
 
+
   ngOnInit(): void {
+    this.data.currentMessage.subscribe(id => this.songId = +id);
+    this.data.showUp.subscribe(id => this.showUp = (id === 'true'));
     this.playlistService.latestPlaylist().subscribe( async listPlaylistNew => {
       this.listPlaylistNew = listPlaylistNew;
        $(document).ready(() => {

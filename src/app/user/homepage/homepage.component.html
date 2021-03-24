@@ -1,3 +1,4 @@
+
 <app-header></app-header>
 <div style="margin-top: 20px"></div>
 <div style="width: 80%; height: auto; margin: 0 auto;" id="carouselExampleFade" class="carousel slide carousel-fade" data-ride="carousel">
@@ -159,3 +160,7 @@
   </div>
 </div>
 <app-footer></app-footer>
+
+<div *ngIf="showUp">
+  <app-song-all-page [(trackId)]="songId"></app-song-all-page>
+</div>

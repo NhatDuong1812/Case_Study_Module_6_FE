@@ -56,15 +56,12 @@ export class CreateSingerComponent implements OnInit {
           this.singer.avatar = url;
           await this.createSinger();
           this.createSuccess =true;
+          this.switchEditSinger();
         });
       })
     ).subscribe();
 
-    // if (this.singer.name == null){
-    //   this.singer.name ="a";
-    // }else {
-    //   this.switchEditSinger(this.singer.name);
-    // }
+
 
   }
   showPreview(event: any){
@@ -77,15 +74,8 @@ export class CreateSingerComponent implements OnInit {
     }
   }
 
-  switchEditSinger(name: string): void{
-
-     this.singerService.findAllByNameContains(name).subscribe(value => {
-      this.singerList = value;
-    });
-
-      this.singer = this.singerList[0];
-      let id = this.singer.id;
-      this.router.navigate(["/edit-singer/"+this.currentUser.username,this.singer.id]);
+  switchEditSinger(): void{
+      this.router.navigate(["/edit-singer/"+this.currentUser.username,this.singer.name]);
   }
   cancel(){
     this.router.navigate(["/profile"+ this.currentUser.username]);

@@ -13,7 +13,9 @@ import {AuthService} from "../../service/auth/auth.service";
 })
 export class EditSingerComponent implements OnInit {
   singer: singer = {};
+  singerList: singer[]= [];
   id: number = -1;
+  name: string='';
   currentUser: any;
   selectedImage: any = null;
   username: any;
@@ -24,20 +26,27 @@ export class EditSingerComponent implements OnInit {
               private storage: AngularFireStorage,
               private authService: AuthService,
               private router: Router) {
-    this.authService.currentUserSubject.subscribe(value => {
-      this.currentUser = value;
+    this.activatedRouter.paramMap.subscribe( async paramMap =>{
+
+      // @ts-ignore
+      this.name= paramMap.get('singer');
+      this.getSingerList(this.name);
+      this.getAuthen();
     })
   }
 
   ngOnInit(): void {
-    this.activatedRouter.paramMap.subscribe( async paramMap =>{
-      // @ts-ignore
-      this.id = +paramMap.get('id');
-      this.singerService.findByID(this.id).subscribe(value => {
-        this.singer = value;
-        }
-      )
+  }
+  getSingerList(name: string): void{
+    this.singerService.findByName(name).subscribe(value1 => {
+      this.singer = value1;
+      }
+    )
+     // = this.singerList[0];
+  }
+  getAuthen(){
+    this.authService.currentUserSubject.subscribe(value => {
+      this.currentUser = value;
     })
   }
-
 }

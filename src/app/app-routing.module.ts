@@ -104,7 +104,7 @@ const routes: Routes = [
     component: ListSingerComponent
   },
   {
-    path: 'edit-singer/:username',
+    path: 'edit-singer/:username/:singer',
     component: EditSingerComponent
   }
 ];

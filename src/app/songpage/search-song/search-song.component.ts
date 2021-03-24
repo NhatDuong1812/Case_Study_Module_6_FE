@@ -21,7 +21,8 @@ export class SearchSongComponent implements OnInit {
   constructor(private songService: SongService,
               private activatedRoute: ActivatedRoute,
               private playlistService: PlaylistService,
-              private singerService: SingerService) {
+              private singerService: SingerService
+              ) {
     this.activatedRoute.paramMap.subscribe(async paramMap => {
       this.keyword = paramMap.get('keyword');
       this.getListPlayList(this.keyword);

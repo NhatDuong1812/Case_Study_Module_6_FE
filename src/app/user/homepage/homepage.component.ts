@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Playlist} from '../../model/playlist';
 import {PlaylistService} from '../../service/playlist/playlist.service';
 import {song} from '../../model/song';
 import {SongService} from '../../service/song/song.service';
+import { DataServiceService } from 'src/app/service/data/data-service.service';
 
 declare var $: any;
 
@@ -16,10 +17,26 @@ export class HomepageComponent implements OnInit {
   showPlaylistLike = false;
   listPlaylistNew : Playlist[] = [];
   listSongMostView10 : song[] = [];
-  constructor(private playlistService: PlaylistService, private songService: SongService) {
+
+  showUp = false;
+
+  songId:number;
+
+  getSongId(id:any){
+    this.songId = id;
+    console.log(this.songId);
+    this.data.changeMessage(id);
+    this.data.changeShowUp("true");
+  }
+  constructor( private playlistService: PlaylistService,
+               private songService: SongService,
+               private data: DataServiceService) {
   }
 
+
   ngOnInit(): void {
+    this.data.currentMessage.subscribe(id => this.songId = +id);
+    this.data.showUp.subscribe(id => this.showUp = (id === 'true'));
     this.playlistService.latestPlaylist().subscribe( async listPlaylistNew => {
       this.listPlaylistNew = listPlaylistNew;
        $(document).ready(() => {

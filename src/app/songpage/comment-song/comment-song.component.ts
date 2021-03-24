@@ -25,11 +25,12 @@ export class CommentSongComponent implements OnInit {
   numberCommentShow = 5;
 
   constructor(private route: Router, private userDetailService : UserdetailService,private commentSongService : CommentSongService, private activatedRoute: ActivatedRoute, private authService: AuthService) {
-    activatedRoute.paramMap.subscribe( async paramMap => {
-      // @ts-ignore
-      this.idSong = +paramMap.get('id');
-      await this.getListCommentSong();
-    })
+    // activatedRoute.paramMap.subscribe( async paramMap => {
+    //   // @ts-ignore
+    //   this.idSong = +paramMap.get('id');
+    //   await this.getListCommentSong();
+    // })
+    this.idSong = 5;
   }
 
   ngOnInit(): void {

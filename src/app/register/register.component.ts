@@ -50,11 +50,11 @@ export class RegisterComponent implements OnInit {
             this.validatePassword = true;
             if (((this.customer.tel + '').length > 7 && (this.customer.tel + '').length < 12) || this.customer.tel == undefined){
               this.validateTel = true;
-              this.userdetailservice.createNewCustomer(this.customer).subscribe(() => {
-               // alert("success");
-                // this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/login';
-                // this.router.navigate(["/login"]);
+              if(((this.customer.email + '').length < 7 && (this.customer.email + '').length < 12) ){
+                this.validateEmail = true;
+              }
 
+              this.userdetailservice.createNewCustomer(this.customer).subscribe(() => {
               });
               this.router.navigate(["login"]);
             }else {

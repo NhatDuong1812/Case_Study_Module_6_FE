@@ -28,4 +28,7 @@ export class ListSingerComponent implements OnInit {
   addSinger(){
     this.route.navigate(['/create-singer/'+ this.currentUser.username])
   }
+  siwtchSingerDetail(name: string){
+    this.route.navigate(["/edit-singer/"+this.currentUser.username,name]);
+  }
 }

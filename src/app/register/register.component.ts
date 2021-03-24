@@ -61,23 +61,18 @@ export class RegisterComponent implements OnInit {
         if (this.validateUsername){
           if ((this.customer.password + '').length > 5 && this.customer.password != undefined){
             this.validatePassword = true;
-
-            if (((this.customer.tel + '').length > 7 && (this.customer.tel + '').length < 12) && (this.validateEmail()) && ((this.customer.email + '').length > 0)){
-              console.log((this.customer.email + '').length);
+            if (((this.customer.tel + '').length > 7 && (this.customer.tel + '').length < 12)){
               this.validateTel = true;
-              this.userdetailservice.createNewCustomer(this.customer).subscribe(() => {
-               // alert("success");
-                // this.returnUrl = this.route.snapshot.queryParams.returnUrl || '/login';
-                // this.router.navigate(["/login"]);
-
-              });
+              if ((this.validateEmail()) && ((this.customer.email + '').length > 0)){
+                this.createEmail = true;
+                this.createSuccess = true;
+                this.logindisplay = true;
+              }else {
+                this.createEmail = false;
+              }
               // this.router.navigate(["login"]);
-              this.createSuccess = true;
-              this.logindisplay = true;
-              this.createEmail = true;
             }else {
               this.validateTel = false;
-              this.createEmail = false;
             }
           }else {
             this.validatePassword = false;
@@ -90,6 +85,10 @@ export class RegisterComponent implements OnInit {
       this.validateName = false;
     }
 
+    if (this.validateName && this.validateUsername && this.validatePassword && this.validateTel && this.validateAddress && this.createEmail  ){
+      this.userdetailservice.createNewCustomer(this.customer).subscribe(() => {
+      });
+    }
   }
 
 

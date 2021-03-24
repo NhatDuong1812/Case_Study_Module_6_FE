@@ -22,7 +22,6 @@ import {SearchPlaylistComponent} from './playlist/search-playlist/search-playlis
 import {ListsongPlaylistComponent} from './playlist/listsong-playlist/listsong-playlist.component';
 
 const routes: Routes = [
-
   {
     path: '',
     component: HomepageComponent

@@ -6,14 +6,13 @@ export const environment = {
   production: false,
   apiUrl: 'http://localhost:8080',
   firebaseConfig : {
-    apiKey: 'AIzaSyBgejqM4LjZ111lJEk82Iilfl39v5LNmfM',
-    authDomain: 'fir-upload-file-b16ec.firebaseapp.com',
-    databaseURL: 'https://fir-upload-file-b16ec-default-rtdb.firebaseio.com/',
-    projectId: 'fir-upload-file-b16ec',
-    storageBucket: 'fir-upload-file-b16ec.appspot.com',
-    messagingSenderId: '865067288230',
-    appId: '1:865067288230:web:ddb152d7c7cf7ba8261667',
-    measurementId: 'G-GZVS3Q3EJ8'
+    apiKey: "AIzaSyCL9OFSh8lfT-4qJrtm1Hb6gS1kGD1DbP4",
+    authDomain: "lastwhisper-e6ba5.firebaseapp.com",
+    projectId: "lastwhisper-e6ba5",
+    storageBucket: "lastwhisper-e6ba5.appspot.com",
+    messagingSenderId: "281025296560",
+    appId: "1:281025296560:web:c3326b92d57f41d784a375",
+    measurementId: "G-1QT9VLJJ2M"
   }
 };
 

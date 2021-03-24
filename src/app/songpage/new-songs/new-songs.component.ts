@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DataServiceService } from 'src/app/service/data/data-service.service';
 import {song} from '../../model/song';
 import {SongService} from '../../service/song/song.service';
 
@@ -8,8 +9,18 @@ import {SongService} from '../../service/song/song.service';
   styleUrls: ['./new-songs.component.css']
 })
 export class NewSongsComponent implements OnInit {
-listLatestSongs: song[] = [];
-  constructor(private songService: SongService) { }
+
+  songId:any;
+
+  listLatestSongs: song[] = [];
+  constructor(private songService: SongService,
+              private data: DataServiceService) { }
+
+  getSongId(id:any){
+    this.songId = id;
+    this.data.changeMessage(id);
+    this.data.changeShowUp("true");
+  }
 
   ngOnInit(): void {
     this.songService.getLatest().subscribe(listSongs => {

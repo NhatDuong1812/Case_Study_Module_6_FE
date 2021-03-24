@@ -105,7 +105,7 @@ export class CreatesongComponent implements OnInit {
   createSong(){
     console.log(this.song);
     return this.songService.createSong(this.song, this.currentUser.username).toPromise();
-    
+
   }
   // tslint:disable-next-line:typedef
   submit(){ // Tai anh len firebase, lua duong dan vao db.
@@ -117,7 +117,7 @@ export class CreatesongComponent implements OnInit {
           this.song.avatar = url;
           await this.uploadFile();
           this.createSuccess = false;
-          
+
         });
       })
     ).subscribe();

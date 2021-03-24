@@ -5,6 +5,8 @@ import {Track} from "ngx-audio-player";
 import {Playlist} from "../../model/playlist";
 import {LikePlaylist} from "../../model/like-playlist";
 import {AuthService} from "../../service/auth/auth.service";
+import { song } from 'src/app/model/song';
+import { User } from 'saucelabs';
 
 @Component({
   selector: 'app-play-playlist',
@@ -13,6 +15,7 @@ import {AuthService} from "../../service/auth/auth.service";
 })
 export class PlayPlaylistComponent implements OnInit {
   playlist: Playlist = {};
+  user: User = {};
   idPlaylist: number | undefined;
   trackPlaylists: Track[] = [];
   topPlaylists: Playlist[] = [];

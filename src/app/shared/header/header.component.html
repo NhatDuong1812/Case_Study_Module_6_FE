@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light rounded">
-  <a class="navbar-brand" href="#">
+  <a class="navbar-brand" routerLink="">
     <img src="../../../assets/image/Capture3.jpg" height="50" width="150"/></a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -20,10 +20,10 @@
     </form>
     <ul class="navbar-nav" *ngIf="!isUserLogin">
       <li class="nav-item">
-        <a class="nav-link" href="/register"><i class="fas fa-user"></i> Đăng ký</a>
+        <a class="nav-link" routerLink="/register"><i class="fas fa-user"></i> Đăng ký</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="/login"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a>
+        <a class="nav-link" routerLink="/login"><i class="fas fa-sign-in-alt"></i> Đăng nhập</a>
       </li>
     </ul>
     <ul class="navbar-nav" *ngIf="isUserLogin">

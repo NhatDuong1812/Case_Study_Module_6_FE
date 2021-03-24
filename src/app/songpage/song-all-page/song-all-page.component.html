@@ -1,0 +1,19 @@
+<div style="width: 100%; background-color: gray; position: fixed; bottom: 0;">
+  <table>
+    <tr>
+      <td width="50px" ></td>
+      <td width="60px" height="60px"><img width="50px" height="50px" [src]="song.avatar"></td>
+      <td></td>
+      <td width="1200px"><ngx-audio-player [autoPlay]="ngxAutoPlay"
+        [displayPlaylist]="false"
+        [displayTitle]="false"
+        [displayVolumeControls]="true"
+        [disablePositionSlider]="false"
+        [displayDuration]="true" [expanded]="true"
+        [playlist]="singleTrack">
+</ngx-audio-player></td>
+    </tr>
+
+  </table>
+
+</div>

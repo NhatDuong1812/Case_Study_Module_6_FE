@@ -1,0 +1,74 @@
+<app-header></app-header>
+<div class="container">
+  <header class="jumbotron">
+    <div class="container emp-profile" >
+      <form method="post">
+        <div class="row">
+          <div class="col-md-3">
+            <div class="profile-head">
+              <h2 style="color: blue">
+                <strong>TẠO CA SĨ</strong>
+              </h2>
+            </div>
+          </div>
+          <div class="col-md-12">
+            <div class="tab-content profile-tab" id="myTabContent">
+              <div style="margin-left: 50px">
+
+                <form (ngSubmit)="submit()">
+                  <div>
+                    <div class="row" style="margin-bottom: 25px">
+                      <div class="col-md-2">
+                        <label>Tên Ca Sĩ</label>
+                      </div>
+                      <div class="col-md-10">
+                        <label>
+                          <input type="text" [(ngModel)]="singer.name" name="name">
+                        </label>
+                      </div>
+                    </div>
+<!--                    <div class="row" style="margin-bottom: 25px">-->
+<!--                      <div class="col-md-2">-->
+<!--                        <label>File nhạc</label>-->
+<!--                      </div>-->
+<!--&lt;!&ndash;                      <div class="col-md-10">&ndash;&gt;-->
+<!--&lt;!&ndash;                        <input type="file"  name="file" (change)="getFile($event)" accept="audio/mp3, audio/m4a" required>&ndash;&gt;-->
+<!--&lt;!&ndash;                      </div>&ndash;&gt;-->
+<!--                    </div>-->
+                    <div class="row" style="margin-bottom: 25px">
+                      <div class="col-md-2" style="margin-right: 30px">
+                        <label>Avatar</label>
+                      </div>
+                      <tr>
+                        <td><label for="avatar"></label></td>
+                        <td><input type="file" [(ngModel)]="singer.avatar" name="avatar" id="avatar" (change)="showPreview($event)" accept="image/*"></td>
+                      </tr>
+                    </div>
+                    <div class="row" style="margin-bottom: 25px">
+                      <div class="col-md-2">
+                        <label>Description</label>
+                      </div>
+                      <div class="col-md-10">
+                        <label>
+                          <textarea cols="75" rows="10"  [(ngModel)]="singer.description" name="description"></textarea>
+                        </label>
+                      </div>
+                    </div>
+                    <div>
+
+                    </div>
+                    <div>
+                      <p style="color: red" *ngIf="createSuccess">Tạo singer thành công</p>
+                      <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit" style="margin: 5px">Save</button> <button class="btn btn-primary profile-button" type="submit" (click)="cancel()" >Cancel</button></div>
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+  </header>
+</div>
+<app-footer></app-footer>

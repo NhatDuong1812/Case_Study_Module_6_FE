@@ -1,0 +1,28 @@
+<app-header></app-header>
+<center>
+<form style="border: 1px solid black;" class="align-content-lg-center rounded bg-white border" style="position: center">
+  <fieldset>
+  <div class="container rounded bg-white mt-7 mb-5 " style="padding-top: 20px;padding-left: 50px">
+    <span class="text-uppercase name" style="font-size: 40px; ">
+      <legend style="border: red">Information</legend>
+    </span>
+    <div class="row font-weight-bold">
+      <div class="col-md-9" style="align-content: center;padding-left: 40%">
+        <div class=" py-10 border">
+          <div class="col-md-12 ">
+            <div class="d-flex flex-column align-items-center text-center p-5 py-6"><img [src] = "singer.avatar" style="width: 400px; height: auto; margin-top: 10px" alt="Anh dai dien" ><span class="font-weight-bold"></span><span class="text-black-50"></span><span> </span></div>
+          </div>
+          <div class="row mt-6">
+            <div class="col-md-12"><label class="labels">Name Singer</label><p type="text" class="form-control" name="name" [(ngModel)]="singer.name" disabled>{{singer.name}}</div>
+          </div>
+          <div class="row mt-6">
+            <div class="col-md-12"><label class="labels">Description Singer</label><p type="text" class="form-control" name="name" [(ngModel)]="singer.description" disabled>{{singer.description}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </fieldset>
+</form>
+</center>
+<app-footer></app-footer>

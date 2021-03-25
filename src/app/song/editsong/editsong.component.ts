@@ -22,7 +22,12 @@ export class EditsongComponent implements OnInit {
   username: any;
   userDetail : userdetail = {};
 
-  constructor(private storage: AngularFireStorage, private authService: AuthService, private songService: SongService, private activatedRoute: ActivatedRoute, private  route: Router,private userDetailService : UserdetailService) {
+  constructor(private storage: AngularFireStorage,
+              private authService: AuthService,
+              private songService: SongService,
+              private activatedRoute: ActivatedRoute,
+              private  route: Router,
+              private userDetailService : UserdetailService) {
     this.authService.currentUserSubject.subscribe(value => {
       this.currentUser = value;
     });

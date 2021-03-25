@@ -16,7 +16,7 @@
         </div>
         <div class="mt-3 px-4"> <span class="text-uppercase name">Playlist Picture</span>
           <div class="d-flex flex-row align-items-center mt-2">
-            <div class="ml-3"> <input type="file" [(ngModel)]="playlist.avatar" name="avatar" id="avatar" (change)="showPreview($event)" ></div>
+            <div class="ml-3"> <input type="file" [(ngModel)]="playlist.avatar" name="avatar" id="avatar" (change)="showPreview($event)" accept="image/*"></div>
           </div>
         </div>
         <div>

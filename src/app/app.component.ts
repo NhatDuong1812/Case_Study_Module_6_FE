@@ -11,6 +11,16 @@ import { HomepageComponent } from './user/homepage/homepage.component';
 })
 export class AppComponent {
 
+  showUp = false;
+  songId:number;
 
+  constructor(private data: DataServiceService){
+
+  }
+
+  ngOnInit(){
+    this.data.currentMessage.subscribe(id => this.songId = +id);
+    this.data.showUp.subscribe(id => this.showUp = (id === 'true'));
+  }
 
 }

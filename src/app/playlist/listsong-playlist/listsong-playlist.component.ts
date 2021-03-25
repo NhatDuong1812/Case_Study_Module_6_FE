@@ -4,6 +4,7 @@ import {SongService} from '../../service/song/song.service';
 import {AuthService} from '../../service/auth/auth.service';
 import {ActivatedRoute, Router} from '@angular/router';
 import {PlaylistService} from '../../service/playlist/playlist.service';
+import { DataServiceService } from 'src/app/service/data/data-service.service';
 
 @Component({
   selector: 'app-listsong-playlist',
@@ -15,7 +16,13 @@ export class ListsongPlaylistComponent implements OnInit {
   listSong : song[] = [];
   currentUser : any;
   idPlaylist = -1;
-  constructor(private playlistService: PlaylistService, private songService : SongService, private authService : AuthService, private route : Router,private activatedRoute: ActivatedRoute) {
+
+  constructor(private playlistService: PlaylistService,
+              private songService : SongService,
+              private authService : AuthService,
+              private route : Router,
+              private activatedRoute: ActivatedRoute,
+              private data: DataServiceService) {
     this.authService.currentUserSubject.subscribe(value => {
       this.currentUser = value;
     })
@@ -30,6 +37,7 @@ export class ListsongPlaylistComponent implements OnInit {
       });
     })
   }
+
   deleteSong(id : number){
     if (confirm("Bạn chắc chắn xoá bài hát khỏi playlist không ?")){
       this.playlistService.deleteSongOutPlaylist(this.idPlaylist,this.currentUser.username, id).subscribe( songs => {

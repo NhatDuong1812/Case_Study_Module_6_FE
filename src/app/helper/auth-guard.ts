@@ -12,6 +12,8 @@ import {AuthService} from '../service/auth/auth.service';
 @Injectable({
   providedIn: 'root'
 })
+
+
 export class AuthGuard implements CanActivate, CanActivateChild{
   currentUser: UserToken | undefined;
 

@@ -19,7 +19,11 @@ export class CreatePlaylistComponent implements OnInit {
   username: any;
   createSuccess = false;
 
-  constructor(private playlistService: PlaylistService, private activatedRoute: ActivatedRoute, private authService : AuthService, private route: Router, private storage: AngularFireStorage) {
+  constructor(private playlistService: PlaylistService,
+              private activatedRoute: ActivatedRoute,
+              private authService : AuthService,
+              private route: Router,
+              private storage: AngularFireStorage) {
     this.authService.currentUserSubject.subscribe(value => {
       this.currentUser = value;
     })
@@ -39,7 +43,8 @@ export class CreatePlaylistComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   submit() {
-    const filePath = `${this.playlist.name}/${this.selectedImage.name.split('.').slice(0, -1).join('.')}_${new Date().getTime()}`;
+    const filePath = `${this.playlist.name}/${this.selectedImage.name.split('.').
+                                slice(0, -1).join('.')}_${new Date().getTime()}`;
     const fileRef = this.storage.ref(filePath);
     this.storage.upload(filePath, this.selectedImage).snapshotChanges().pipe(
       finalize(() => {

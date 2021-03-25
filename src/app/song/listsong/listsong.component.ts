@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { song } from '../../model/song';
-import { SongService } from '../../service/song/song.service';
-import { AuthService } from '../../service/auth/auth.service';
-import { Route, Router } from '@angular/router';
+import {song} from '../../model/song';
+import {SongService} from '../../service/song/song.service';
+import {AuthService} from '../../service/auth/auth.service';
+import {Route, Router} from '@angular/router';
+import { DataServiceService } from 'src/app/service/data/data-service.service';
 
 @Component({
   selector: 'app-listsong',
@@ -10,9 +11,12 @@ import { Route, Router } from '@angular/router';
   styleUrls: ['./listsong.component.css']
 })
 export class ListsongComponent implements OnInit {
-  listSong: song[] = [];
-  currentUser: any;
-  constructor(private songService: SongService, private authService: AuthService, private route: Router) {
+  listSong : song[] = [];
+  currentUser : any;
+  constructor(private songService : SongService,
+              private authService : AuthService,
+              private route : Router,
+              private data: DataServiceService) {
     this.authService.currentUserSubject.subscribe(value => {
       this.currentUser = value;
     })
@@ -23,7 +27,13 @@ export class ListsongComponent implements OnInit {
       this.listSong = list;
     });
   }
-  addSong() {
+
+  changSongId(id: number){
+    this.data.changeShowUp("true");
+    this.data.changeMessage(id+'');
+  }
+
+  addSong(){
     this.route.navigate(['/createsong/' + this.currentUser.username])
   }
   deleteSong(id: number) {
@@ -34,4 +44,5 @@ export class ListsongComponent implements OnInit {
       })
     }
   }
+
 }

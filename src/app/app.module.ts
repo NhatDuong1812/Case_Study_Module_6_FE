@@ -44,7 +44,9 @@ import {SearchPlaylistComponent} from "./playlist/search-playlist/search-playlis
 import { CommentPlaylistComponent } from './comment-playlist/comment-playlist.component';
 import { SongAllPageComponent } from './songpage/song-all-page/song-all-page.component';
 import { CreateSingerComponent } from './singer/create-singer/create-singer.component';
+// @ts-ignore
 import { EditSingerComponent } from './singer/edit-singer/edit-singer.component';
+// @ts-ignore
 import { ListSingerComponent } from './singer/list-singer/list-singer.component';
 
 @NgModule({

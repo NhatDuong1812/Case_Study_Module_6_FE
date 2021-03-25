@@ -34,7 +34,7 @@
                   <td>{{song.author}}</td>
                   <td>{{song.creationTime.substring(0,10)}}</td>
                   <td>{{song.numberOfView}}</td>
-                  <td><img width="100" height="100" src="{{song.avatar}}" alt=""></td>
+                  <td><img width="100" height="100" src="{{song.avatar}}" alt="" (click)="changSongId(song.id)"></td>
                   <td> <a [routerLink]="['/editsong',currentUser.username,song.id]">Edit</a></td >
                   <td> <button type="button" class="btn btn-secondary" (click)="deleteSong(song.id)">Delete</button></td>
                 </tr>

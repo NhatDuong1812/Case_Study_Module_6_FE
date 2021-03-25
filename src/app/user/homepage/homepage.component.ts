@@ -36,8 +36,6 @@ export class HomepageComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.data.currentMessage.subscribe(id => this.songId = +id);
-    this.data.showUp.subscribe(id => this.showUp = (id === 'true'));
     this.playlistService.latestPlaylist().subscribe( async listPlaylistNew => {
       this.listPlaylistNew = listPlaylistNew;
        $(document).ready(() => {

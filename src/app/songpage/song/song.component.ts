@@ -12,6 +12,7 @@ import {UserdetailService} from '../../service/userdetail/userdetail.service';
 import {CommentSongService} from '../../service/comment-song/comment-song.service';
 import {CommentSong} from '../../model/comment-song';
 import {userdetail} from '../../model/userdetail';
+import { DataServiceService } from 'src/app/service/data/data-service.service';
 
 @Component({
   selector: 'app-song',
@@ -50,10 +51,13 @@ export class SongComponent implements OnInit {
   avatar : any;
   commentSong : CommentSong = {};
 
+  showUp = false;
+
   constructor(private songService: SongService,
               private activatedRoute: ActivatedRoute,
               private playListService: PlaylistService,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private data: DataServiceService) {
     this.authService.currentUserSubject.subscribe(value => {
       this.likeSong.user = value;
       this.currentUser = value;
@@ -68,10 +72,14 @@ export class SongComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.data.changeShowUp('false');
     this.getList10SongInTopViews();
     this.checkStatusLike(this.likeSong);
   }
 
+  ngOnDestroy(){
+    this.data.changeShowUp('true');
+  }
   // tslint:disable-next-line:typedef
   getTrackById(id: number) {
     this.songService.getSongById(id).subscribe(value => {

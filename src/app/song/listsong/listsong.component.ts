@@ -3,6 +3,7 @@ import {song} from '../../model/song';
 import {SongService} from '../../service/song/song.service';
 import {AuthService} from '../../service/auth/auth.service';
 import {Route, Router} from '@angular/router';
+import { DataServiceService } from 'src/app/service/data/data-service.service';
 
 @Component({
   selector: 'app-listsong',
@@ -14,23 +15,30 @@ export class ListsongComponent implements OnInit {
   currentUser : any;
   constructor(private songService : SongService,
               private authService : AuthService,
-              private route : Router) {
+              private route : Router,
+              private data: DataServiceService) {
     this.authService.currentUserSubject.subscribe(value => {
       this.currentUser = value;
     })
   }
 
   ngOnInit(): void {
-     this.songService.getAllSong(this.currentUser.username).subscribe( list => {
-       this.listSong = list;
-     });
+    this.songService.getAllSong(this.currentUser.username).subscribe(list => {
+      this.listSong = list;
+    });
   }
+
+  changSongId(id: number){
+    this.data.changeShowUp("true");
+    this.data.changeMessage(id+'');
+  }
+
   addSong(){
     this.route.navigate(['/createsong/' + this.currentUser.username])
   }
-  deleteSong(id : number){
-    if (confirm("Bạn chắc chắn xoá không ?")){
-      this.songService.deleteSong(id,this.currentUser.username).subscribe( async song => {
+  deleteSong(id: number) {
+    if (confirm("Bạn chắc chắn xoá không ?")) {
+      this.songService.deleteSong(id, this.currentUser.username).subscribe(async song => {
         await this.route.navigate(['/createsong/' + this.currentUser.username])
         await this.route.navigate(['/listsong/' + this.currentUser.username])
       })

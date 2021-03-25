@@ -7,6 +7,7 @@ import {LikePlaylist} from "../../model/like-playlist";
 import {AuthService} from "../../service/auth/auth.service";
 import { song } from 'src/app/model/song';
 import { User } from 'saucelabs';
+import { DataServiceService } from 'src/app/service/data/data-service.service';
 
 @Component({
   selector: 'app-play-playlist',
@@ -30,7 +31,8 @@ export class PlayPlaylistComponent implements OnInit {
 
   constructor(private playlistService: PlaylistService,
               private activatedRoute: ActivatedRoute,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private data: DataServiceService) {
     this.authService.currentUserSubject.subscribe(value => {
       this.likePLayList.user = value;
       this.currentUser = value;
@@ -49,6 +51,11 @@ export class PlayPlaylistComponent implements OnInit {
 
   ngOnInit(): void {
     this.checkStatusLikePlaylist(this.likePLayList);
+    this.data.changeShowUp('false');
+  }
+
+  ngOnDestroy(){
+    this.data.changeShowUp('true');
   }
 
   getTrackPlaylist(idPlaylist: number){

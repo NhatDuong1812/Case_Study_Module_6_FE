@@ -4,13 +4,13 @@ import {HttpClient} from '@angular/common/http';
 import {environment} from '../../../environments/environment';
 import {Observable} from 'rxjs';
 import {CommentSong} from '../../model/comment-song';
-const API_URL = `${environment.apiUrl}`;
+// const API_URL = `${environment.apiUrl}`;
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommentSongService {
-
+  private API_URL = environment.apiUrl;
   currentUser : any;
   constructor(private authService: AuthService,private http: HttpClient) {
     this.authService.currentUserSubject.subscribe(value => {
@@ -22,9 +22,9 @@ export class CommentSongService {
   }
 
   getListCommentSongBySongId(songId : number): Observable<CommentSong[]>{
-    return this.http.get<CommentSong[]>(API_URL + `/commentSong/${songId}`)
+    return this.http.get<CommentSong[]>(this.API_URL + `/commentSong/${songId}`)
   }
   postCommentSong(songId : number,username: string, commentSong : CommentSong):Observable<CommentSong>{
-    return this.http.post<CommentSong>(API_URL + `/commentSong/${songId}/${username}`,commentSong)
+    return this.http.post<CommentSong>(this.API_URL + `/commentSong/${songId}/${username}`,commentSong)
   }
 }

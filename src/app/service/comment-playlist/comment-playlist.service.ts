@@ -5,13 +5,13 @@ import {Observable} from 'rxjs';
 import {CommentSong} from '../../model/comment-song';
 import {environment} from '../../../environments/environment';
 import {CommentPlaylist} from '../../model/comment-playlist';
-const API_URL = `${environment.apiUrl}`;
+// const API_URL = `${environment.apiUrl}`;
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommentPlaylistService {
-
+  private API_URL = environment.apiUrl;
   currentUser: any;
 
   constructor(private authService: AuthService, private http: HttpClient) {
@@ -24,10 +24,10 @@ export class CommentPlaylistService {
   }
 
   getListCommentPlaylistByPlaylistId(playlistID: number): Observable<CommentPlaylist[]> {
-    return this.http.get<CommentPlaylist[]>(API_URL + `/commentPlaylist/${playlistID}`)
+    return this.http.get<CommentPlaylist[]>(this.API_URL + `/commentPlaylist/${playlistID}`)
   }
 
   postCommentPlaylist(commentPlaylistID: number, username: string, commentPlaylist: CommentPlaylist): Observable<CommentPlaylist> {
-    return this.http.post<CommentPlaylist>(API_URL + `/commentPlaylist/${commentPlaylistID}/${username}`, commentPlaylist)
+    return this.http.post<CommentPlaylist>(this.API_URL + `/commentPlaylist/${commentPlaylistID}/${username}`, commentPlaylist)
   }
 }

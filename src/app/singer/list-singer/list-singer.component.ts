@@ -42,16 +42,34 @@ export class ListSingerComponent implements OnInit {
   }
 
   nextPage() {
-    if (this.page == this.totalPage) return;
+    if (this.page==this.totalPage-1 || this.totalPage==1 ||this.page>=this.totalPage-1) {
+      return;
+    }
+    if (this.totalPage ==2 && this.page == 0) {
+      this.page =this.page+1;
+      this.getAllPageSinger();
+      return;
+    }
+    if (this.page >= this.totalPage-1) return;
     this.page = this.page+1;
     this.getAllPageSinger();
-    if (this.page ==1 || this.page >= this.totalPage- 1) return;
+    if (this.page <=1 || this.page >= this.totalPage- 1) return;
     else this.pageDisplay =this.pageDisplay+1;
   }
   previousPage(){
-    if (this.page ==0) return;
+    if (this.page <= 0 || this.totalPage==1 ) {
+      return;
+    }
+    if (this.totalPage ==2 && this.page == 1) {
+      this.page =this.page-1;
+      this.getAllPageSinger();
+      return;
+    }
+    if (this.page==0 || this.totalPage == 1) {
+      return;
+    }
     this.page =this.page -1;
-    if (this.page-2 <= 0 || this.page == this.totalPage -1 ) return;
+    if (this.page-1 <= 0 || this.page == this.totalPage -1 ) return;
     else this.pageDisplay = this.pageDisplay -1;
 
     this.getAllPageSinger();

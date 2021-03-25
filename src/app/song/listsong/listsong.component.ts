@@ -38,7 +38,7 @@ export class ListsongComponent implements OnInit {
   }
   deleteSong(id: number) {
     if (confirm("Bạn chắc chắn xoá không ?")) {
-      this.songService.deleteSong(id, this.currentUser.username).subscribe(async song => {
+      this.songService.deleteSong(id).subscribe(async song => {
         await this.route.navigate(['/createsong/' + this.currentUser.username])
         await this.route.navigate(['/listsong/' + this.currentUser.username])
       })

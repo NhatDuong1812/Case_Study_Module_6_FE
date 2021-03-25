@@ -41,7 +41,7 @@ export class CreateSingerComponent implements OnInit {
   }
 
   // tslint:disable-next-line:typedef
-  createSinger(){
+  createSinger(): Promise<singer>{
     return this.singerService.createSinger(this.singer).toPromise();
   }
 
@@ -54,7 +54,10 @@ export class CreateSingerComponent implements OnInit {
     finalize(() => {
         fileRef.getDownloadURL().subscribe( async url =>{
           this.singer.avatar = url;
-          await this.createSinger();
+// fix
+          await  this.createSinger().then( res =>{
+            this.singer.id =res.id;
+          });
           this.createSuccess =true;
           this.switchEditSinger();
         });
@@ -75,7 +78,7 @@ export class CreateSingerComponent implements OnInit {
   }
 
   switchEditSinger(): void{
-      this.router.navigate(["/edit-singer/"+this.currentUser.username,this.singer.name]);
+      this.router.navigate(["/edit-singer/"+this.currentUser.username,this.singer.id]);
   }
   cancel(){
     this.router.navigate(["/profile"+ this.currentUser.username]);

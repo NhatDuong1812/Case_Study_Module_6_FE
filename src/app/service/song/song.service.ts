@@ -16,7 +16,7 @@ export class SongService {
       this.currentUser = value;
       if(this.currentUser){
       }
-      /*this.currentUser.id*/
+
     })
   }
   getSongById(id: number): Observable<song> {

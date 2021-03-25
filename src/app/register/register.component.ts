@@ -24,6 +24,7 @@ export class RegisterComponent implements OnInit {
   createEmail = true;
   createAddress = true;
   validateemailDup = true;
+  createspace = true;
   // email = this.customer.email;
 
 
@@ -39,6 +40,8 @@ export class RegisterComponent implements OnInit {
     this.userdetailservice.getAllUser().subscribe(listUser =>{
       this.listUser = listUser;
     });
+
+
   }
 
   validateEmail() {
@@ -46,6 +49,8 @@ export class RegisterComponent implements OnInit {
     const regularExpression = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
     return regularExpression.test(String(this.customer.email).toLowerCase());
   }
+
+
 
 
   register(){
@@ -87,13 +92,13 @@ export class RegisterComponent implements OnInit {
     // }
 
     // fix
-    if ((this.customer.name + '').length > 0 && this.customer.name != undefined) {
+    if ((this.customer.name + '').length > 0 && this.customer.name != undefined ) {
       this.validateName = true;
     }else {
       this.validateName = false;
     }
 
-    if ((this.customer.username + '').length !== 9){
+    if ((this.customer.username + '').length !== 9 ){
       this.validateUsername = true;
       for (let i = 0 ; i < this.listUser.length; i++){
         if (this.customer.username == this.listUser[i].username){
@@ -109,20 +114,20 @@ export class RegisterComponent implements OnInit {
 
 
 
-    if ((this.customer.password + '').length > 5 && this.customer.password != undefined){
+    if ((this.customer.password + '').length > 5 && this.customer.password != undefined ){
       this.validatePassword = true;}
     else {
       this.validatePassword = false;
     }
 
-    if ((this.validateEmail()) && ((this.customer.email + '').length !== 9)){
+    if ((this.validateEmail()) && ((this.customer.email + '').length !== 9 )){
       this.createEmail = true;
 
     }else {
       this.createEmail = false;
     }
 
-    if (((this.customer.tel + '').length > 7 && (this.customer.tel + '').length < 12 && (this.customer.tel + '').length !== 9)   ){
+    if (((this.customer.tel + '').length > 7 && (this.customer.tel + '').length < 12 && (this.customer.tel + '').length !== 9 )   ){
       this.validateTel = true;
 
       // this.router.navigate(["login"]);
@@ -130,14 +135,28 @@ export class RegisterComponent implements OnInit {
       this.validateTel = false;
     }
 
-    if (((this.customer.address + '').length) !== 9){
+    if (((this.customer.address + '').length) !== 9 && (!(this.customer.address + '').startsWith(' '))   ){
         this.createAddress = true;
     }else {
       this.createAddress = false;
     }
 
+    console.log((this.customer.tel + '').length);
+    console.log((this.customer.address + '').length);
+    console.log(!(this.customer.address + '' ).startsWith(' ') );
+    console.log(this.createAddress);
+
+    console.log(this.validateName);
+    console.log(this.validateUsername);
+    console.log(this.validatePassword);
+    console.log(this.validateTel);
+    console.log(this.validateAddress);
+    console.log(this.createEmail);
+    console.log(this.createAddress);
+
     if (this.validateName && this.validateUsername && this.validatePassword && this.validateTel && this.validateAddress && this.createEmail && this.createAddress  ){
       this.userdetailservice.createNewCustomer(this.customer).subscribe(() => {
+        alert("hoang");
         this.createSuccess = true;
         this.logindisplay = true;
       });

@@ -22,7 +22,9 @@ import {SearchPlaylistComponent} from './playlist/search-playlist/search-playlis
 import {ListsongPlaylistComponent} from './playlist/listsong-playlist/listsong-playlist.component';
 // @ts-ignore
 import {CreateSingerComponent} from "./singer/create-singer/create-singer.component";
+// @ts-ignore
 import {ListSingerComponent} from "./singer/list-singer/list-singer.component";
+// @ts-ignore
 import {EditSingerComponent} from "./singer/edit-singer/edit-singer.component";
 
 

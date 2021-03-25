@@ -22,8 +22,9 @@
         <td
           style="background-image: url(https://anhdep.tv/attachments/dd5d8b8e6f192fd55d554cbc2edddb4f-jpeg.9863/);
                  background-repeat: no-repeat">
-          <center style="font-size: 20px;color: black">{{song.name}}</center>
-          <center style="font-size: 20px;color: black">{{song.author}}</center>
+          <center style="font-size: 20px;color: black">{{song.name}}
+            <br/>
+            Trình bày: {{song.author}}</center>
         </td>
       </tr>
       <tr>
@@ -54,6 +55,26 @@
       <tr>
         <td><span style="font-size: 18px;color: blueviolet"><strong>LAST WHISPER MUSIC ENTERTAINMENT</strong></span></td>
       </tr>
+    </table>
+    <table class="table table-bordered">
+      <tr>
+        <td>
+          <strong style="font-size: 20px">LỜI BÀI HÁT: {{song.name}}</strong>
+          <br/>
+          <span style="font-size: 17px;color: gray">Nhạc sĩ: {{song.author}}</span>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <pre class="lyric" *ngIf="showFullLyric" style="display: block;font-size: 13px; font-family: Helvetica, Arial, sans-serif">{{song.lyric}}</pre>
+          <pre *ngIf="!showFullLyric" style="display: inline;font-size: 13px; font-family: Helvetica, Arial, sans-serif">{{song.lyric}}</pre>
+          <br *ngIf="!showFullLyric">
+          <!--          <br *ngIf="!showFullLyric">-->
+          <span><button *ngIf="showFullLyric" type="button" class="btn btn-link" (click)="collapseLyric()">Mở rộng</button></span>
+          <button *ngIf="!showFullLyric" type="button" class="btn btn-link" (click)="collapseLyric()">Thu gọn</button>
+        </td>
+      </tr>
+      <app-comment-song></app-comment-song>
     </table>
   </div>
   <div class="col-md-4">

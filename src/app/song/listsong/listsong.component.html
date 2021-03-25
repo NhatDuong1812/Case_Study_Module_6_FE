@@ -30,7 +30,7 @@
                 <tbody>
                 <tr *ngFor="let song of listSong; let i = index" [(ngModel)]="listSong">
                   <th scope="row">{{i+1}}</th>
-                  <td><a [routerLink]="['/song/'+song.id]">{{song.name}}</a></td>
+                  <td><a [routerLink]="[' /song/' + song.id]">{{song.name}}</a></td>
                   <td>{{song.author}}</td>
                   <td>{{song.creationTime.substring(0,10)}}</td>
                   <td>{{song.numberOfView}}</td>

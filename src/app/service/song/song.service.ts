@@ -43,8 +43,8 @@ export class SongService {
     return this.http.get<song[]>(this.API_URL + `/latestSongs`);
   }
   deleteSong(id : number, username : string): Observable<song>{
-    return this.http.delete<song>(API_URL + `/listsong/${username}/${id}`);
-  }
+    return this.http.delete<song>(this.API_URL + `/listsong/user/${username}/listsong/${id}`);
+  } 
   getList10SongInTopView(): Observable<song[]>{
     return this.http.get<song[]>(this.API_URL + `/top10views`);
   }

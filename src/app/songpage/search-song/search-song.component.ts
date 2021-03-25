@@ -27,6 +27,7 @@ export class SearchSongComponent implements OnInit {
       this.keyword = paramMap.get('keyword');
       this.getListPlayList(this.keyword);
       this.getListSong(this.keyword);
+      this.getListSinger(this.keyword);
     });
   }
 
@@ -46,8 +47,8 @@ export class SearchSongComponent implements OnInit {
   }
   // tslint:disable-next-line:typedef
   getListSinger(keyword: string){
-    return this.singerService.findAllByNameContains(keyword).subscribe(value => {
-      this.singer = value;
+    return this.singerService.findAllByNameContains(keyword).subscribe(value2 => {
+      this.singer = value2;
     });
   }
 }

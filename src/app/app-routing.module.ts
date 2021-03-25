@@ -20,9 +20,11 @@ import {PlayPlaylistComponent} from './playlist/play-playlist/play-playlist.comp
 import {UpdatePlaylistComponent} from './playlist/update-playlist/update-playlist.component';
 import {SearchPlaylistComponent} from './playlist/search-playlist/search-playlist.component';
 import {ListsongPlaylistComponent} from './playlist/listsong-playlist/listsong-playlist.component';
+// @ts-ignore
 import {CreateSingerComponent} from "./singer/create-singer/create-singer.component";
 import {ListSingerComponent} from "./singer/list-singer/list-singer.component";
 import {EditSingerComponent} from "./singer/edit-singer/edit-singer.component";
+
 
 const routes: Routes = [
 

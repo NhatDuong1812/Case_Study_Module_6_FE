@@ -92,13 +92,13 @@ export class RegisterComponent implements OnInit {
     // }
 
     // fix
-    if ((this.customer.name + '').length > 0 && this.customer.name != undefined ) {
+    if ((this.customer.name + '').length > 0 && this.customer.name != undefined && (!(this.customer.name + '').startsWith(' ')) ) {
       this.validateName = true;
     }else {
       this.validateName = false;
     }
 
-    if ((this.customer.username + '').length !== 9 ){
+    if ((this.customer.username + '').length !== 9 && (!(this.customer.username + '').startsWith(' ')) ){
       this.validateUsername = true;
       for (let i = 0 ; i < this.listUser.length; i++){
         if (this.customer.username == this.listUser[i].username){
@@ -114,13 +114,13 @@ export class RegisterComponent implements OnInit {
 
 
 
-    if ((this.customer.password + '').length > 5 && this.customer.password != undefined ){
+    if ((this.customer.password + '').length > 5 && this.customer.password != undefined && (!(this.customer.password + '').startsWith(' ')) ){
       this.validatePassword = true;}
     else {
       this.validatePassword = false;
     }
 
-    if ((this.validateEmail()) && ((this.customer.email + '').length !== 9 )){
+    if ((this.validateEmail()) && ((this.customer.email + '').length !== 9 && (!(this.customer.email + '').startsWith(' ')) )){
       this.createEmail = true;
 
     }else {

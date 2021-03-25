@@ -51,9 +51,11 @@ export class ListSingerComponent implements OnInit {
   previousPage(){
     if (this.page ==0) return;
     this.page =this.page -1;
-    this.getAllPageSinger();
     if (this.page-2 <= 0 || this.page == this.totalPage -1 ) return;
     else this.pageDisplay = this.pageDisplay -1;
+
+    this.getAllPageSinger();
+
   }
   addSinger(){
     this.route.navigate(['/create-singer/'+ this.currentUser.username])
@@ -63,5 +65,12 @@ export class ListSingerComponent implements OnInit {
   }
   changeColor(value: number): string{
     if (value-1 == this.page) return 'red';
+    else return '';
+  }
+  click(number: number){
+    this.page = number -1;
+    if (number-2< 0) this.pageDisplay =0;
+    else if(number+2>this.totalPage) this.pageDisplay = this.totalPage-3;
+    else this.pageDisplay = number-2 ;
   }
 }

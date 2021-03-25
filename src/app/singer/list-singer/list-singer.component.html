@@ -25,8 +25,7 @@
                 </thead>
                 <tbody>
                 <tr *ngFor="let singer1 of listSinger; let i = index" >
-                  <th scope="row">{{i+1+page*5}}</th>
-<!--                  <td><a [routerLink]="['/song/'+song.id]">{{song.name}}</a></td>-->
+                  <td scope="row">{{i+1+page*5}}</td>
                   <td (click)="siwtchSingerDetail(singer1.name)">{{singer1.name}}</td>
                   <td>{{singer1.description}}</td>
                   <td><img width="100" height="100" src="{{singer1.avatar}}" alt=""></td>
@@ -34,9 +33,9 @@
                 <nav aria-label="Page navigation example">
                   <ul class="pagination">
                     <li class="page-item"><a class="page-link" (click)="previousPage()">Previous</a></li>
-                    <li class="page-item"><a class="page-link"  [ngStyle]="{'color': changeColor(this.pageDisplay+1)}">{{this.pageDisplay+1}}</a></li>
-                    <li class="page-item"><a class="page-link" [ngStyle]="{'color': changeColor(this.pageDisplay+2)}">{{this.pageDisplay+2}}</a></li>
-                    <li class="page-item"><a class="page-link" [ngStyle]="{'color': changeColor(this.pageDisplay+3)}">{{this.pageDisplay+3}}</a></li>
+                    <li class="page-item"><a class="page-link"  [ngStyle]="{'color': changeColor(this.pageDisplay+1)}" (click)="click(this.pageDisplay+1)">{{this.pageDisplay+1}}</a></li>
+                    <li class="page-item"><a class="page-link" [ngStyle]="{'color': changeColor(this.pageDisplay+2)}" (click)="click(this.pageDisplay+2)">{{this.pageDisplay+2}}</a></li>
+                    <li class="page-item"><a class="page-link" [ngStyle]="{'color': changeColor(this.pageDisplay+3)}" (click)="click(this.pageDisplay+3)">{{this.pageDisplay+3}}</a></li>
                     <li class="page-item"><a class="page-link" (click)="nextPage()">Next</a></li>
                   </ul>
                 </nav>

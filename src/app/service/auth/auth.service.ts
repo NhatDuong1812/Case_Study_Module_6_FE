@@ -5,11 +5,12 @@ import {UserToken} from '../../model/user-token';
 import {HttpClient} from '@angular/common/http';
 import {map} from 'rxjs/operators';
 
-const API_URL = `${environment.apiUrl}`;
+// const API_URL = `${environment.apiUrl}`;
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  private API_URL = environment.apiUrl;
   update = new EventEmitter<string>();
   public currentUserSubject: BehaviorSubject<UserToken>;
   public currentUser: Observable<UserToken>;
@@ -25,10 +26,10 @@ export class AuthService {
 
   // tslint:disable-next-line:typedef
   login(username: string | undefined, password: string | undefined) {
-    return this.http.post(API_URL + '/login', {username, password})
+    return this.http.post(this.API_URL + '/login', {username, password})
       .pipe(map(user => {
         localStorage.setItem('user', JSON.stringify(user));
-        localStorage.setItem('password',JSON.stringify(password));
+        localStorage.setItem('password', JSON.stringify(password));
         this.currentUserSubject.next(user);
         this.update.emit('login');
         return user;

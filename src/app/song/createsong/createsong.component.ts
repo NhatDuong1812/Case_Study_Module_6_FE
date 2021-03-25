@@ -31,7 +31,9 @@ export class CreatesongComponent implements OnInit {
   progressLoading = 0;
   myBar = 'width: 0%';
   loadFlag = true;
+  // @ts-ignore
   audioFile: File;
+  // @ts-ignore
   downloadURL: Observable<string>;
 
   elem = document.getElementById("myBar") as HTMLElement;
@@ -55,6 +57,7 @@ export class CreatesongComponent implements OnInit {
 
   }
 
+  // @ts-ignore
   getFile(event){
     this.audioFile = event.target.files[0];
     console.log(this.audioFile);

@@ -15,7 +15,7 @@ export class SingerService {
   constructor(private http : HttpClient) { }
 
   getAllSingerPage(page: number, size: number, sort : string): Observable<any>{
-    return this.http.get(`${API_URL}/singer?page=${page}&${size}&${sort}`);
+    return this.http.get(`${this.API_URL}/singer?page=${page}&${size}&${sort}`);
   }
   getAllSinger(): Observable<singer[]>{
 

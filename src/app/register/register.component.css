@@ -1,6 +1,11 @@
 /* Made with love by Mutiullah Samim*/
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
+body{
+  background: full;
+}
+
+
 .container{
   height: 100%;
   width: border-box;

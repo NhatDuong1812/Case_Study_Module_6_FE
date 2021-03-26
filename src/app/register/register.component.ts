@@ -37,9 +37,9 @@ export class RegisterComponent implements OnInit {
   constructor(private userdetailservice: UserdetailService, private router: Router) { }
 
   ngOnInit(): void {
-    this.userdetailservice.getAllUser().subscribe(listUser =>{
-      this.listUser = listUser;
-    });
+    // this.userdetailservice.getAllUser().subscribe(listUser =>{
+    //   this.listUser = listUser;
+    // });
 
 
   }
@@ -54,42 +54,7 @@ export class RegisterComponent implements OnInit {
 
 
   register(){
-    // if ((this.customer.name + '').length > 0 && this.customer.name != undefined){
-    //   this.validateName = true;
-    //   if ((this.customer.username + '').length > 5 && this.customer.username != undefined){
-    //     for (let i = 0 ; i < this.listUser.length; i++){
-    //       if (this.customer.username == this.listUser[i].username){
-    //         this.validateUsername = false;
-    //         break;
-    //       }else {
-    //         this.validateUsername = true;
-    //       }
-    //     }
-    //     if (this.validateUsername){
-    //       if ((this.customer.password + '').length > 5 && this.customer.password != undefined){
-    //         this.validatePassword = true;
-    //         if ((this.validateEmail()) && ((this.customer.email + '').length !== 9)){
-    //           this.createEmail = true;
-    //         }else {
-    //           this.createEmail = false;
-    //         }
-    //         if (((this.customer.tel + '').length > 7 && (this.customer.tel + '').length < 12 && (this.customer.tel + '').length !== 9)   ){
-    //           this.validateTel = true;
-    //
-    //           // this.router.navigate(["login"]);
-    //         }else {
-    //           this.validateTel = false;
-    //         }
-    //       }else {
-    //         this.validatePassword = false;
-    //       }
-    //     }
-    //   }else {
-    //     this.validateUsername = false;
-    //   }
-    // }else {
-    //   this.validateName = false;
-    // }
+
 
     // fix
     if ((this.customer.name + '').length > 0 && this.customer.name != undefined && (!(this.customer.name + '').startsWith(' ')) ) {
@@ -136,7 +101,7 @@ export class RegisterComponent implements OnInit {
     }
 
     if (((this.customer.address + '').length) !== 9 && (!(this.customer.address + '').startsWith(' '))   ){
-        this.createAddress = true;
+      this.createAddress = true;
     }else {
       this.createAddress = false;
     }

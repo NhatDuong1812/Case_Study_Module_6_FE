@@ -33,9 +33,9 @@
                 <nav aria-label="Page navigation example">
                   <ul class="pagination">
                     <li class="page-item"><a class="page-link" (click)="previousPage()">Previous</a></li>
-                    <li class="page-item"><a class="page-link"  [ngStyle]="{'color': changeColor(this.pageDisplay+1)}" (click)="click(this.pageDisplay+1)">{{this.pageDisplay+1}}</a></li>
-                    <li class="page-item"><a class="page-link" [ngStyle]="{'color': changeColor(this.pageDisplay+2)}" (click)="click(this.pageDisplay+2)">{{this.pageDisplay+2}}</a></li>
-                    <li class="page-item"><a class="page-link" [ngStyle]="{'color': changeColor(this.pageDisplay+3)}" (click)="click(this.pageDisplay+3)">{{this.pageDisplay+3}}</a></li>
+                    <li class="page-item"><a class="page-link" *ngIf="totalPage>=1" [ngStyle]="{'color': changeColor(this.pageDisplay+1)}" (click)="click(this.pageDisplay+1)">{{this.pageDisplay+1}}</a></li>
+                    <li class="page-item"><a class="page-link" *ngIf="totalPage>=2" [ngStyle]="{'color': changeColor(this.pageDisplay+2)}" (click)="click(this.pageDisplay+2)">{{this.pageDisplay+2}}</a></li>
+                    <li class="page-item"><a class="page-link" *ngIf="totalPage>=3" [ngStyle]="{'color': changeColor(this.pageDisplay+3)}" (click)="click(this.pageDisplay+3)">{{this.pageDisplay+3}}</a></li>
                     <li class="page-item"><a class="page-link" (click)="nextPage()">Next</a></li>
                   </ul>
                 </nav>
@@ -51,4 +51,3 @@
 
 
 <app-footer></app-footer>
-

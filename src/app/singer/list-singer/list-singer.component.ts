@@ -42,20 +42,38 @@ export class ListSingerComponent implements OnInit {
   }
 
   nextPage() {
-    if (this.page == this.totalPage) return;
+    if (this.page==this.totalPage-1 || this.totalPage==1 ||this.page>=this.totalPage-1) {
+      return;
+    }
+    if (this.totalPage ==2 && this.page == 0) {
+      this.page =this.page+1;
+      this.getAllPageSinger();
+      return;
+    }
+    if (this.page >= this.totalPage-1) return;
     this.page = this.page+1;
     this.getAllPageSinger();
-    if (this.page ==1 || this.page >= this.totalPage- 1) return;
+    if (this.page <=1 || this.page >= this.totalPage- 1) return;
     else this.pageDisplay =this.pageDisplay+1;
   }
   previousPage(){
-    if (this.page ==0) return;
-    this.page =this.page -1;
-    if (this.page-2 <= 0 || this.page == this.totalPage -1 ) return;
+    if (this.page <= 0 || this.totalPage==1 ) {
+      return;
+    }
+    if (this.totalPage ==2 && this.page == 1) {
+      this.page =this.page-1;
+      this.getAllPageSinger();
+      return;
+    }
+
+    if (this.page-1 < 0 || this.page == this.totalPage -1 || this.page<2 ){
+      this.page =this.page -1;
+      this.getAllPageSinger();
+      return;
+    }
     else this.pageDisplay = this.pageDisplay -1;
-
+    this.page = this.page -1;
     this.getAllPageSinger();
-
   }
   addSinger(){
     this.route.navigate(['/create-singer/'+ this.currentUser.username])
@@ -66,9 +84,12 @@ export class ListSingerComponent implements OnInit {
   changeColor(value: number): string{
     if (value-1 == this.page) return 'red';
     else return '';
+
   }
   click(number: number){
     this.page = number -1;
+    this.getAllPageSinger();
+    if (this.totalPage<=3) return;
     if (number-2< 0) this.pageDisplay =0;
     else if(number+2>this.totalPage) this.pageDisplay = this.totalPage-3;
     else this.pageDisplay = number-2 ;

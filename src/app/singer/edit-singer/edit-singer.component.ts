@@ -29,16 +29,16 @@ export class EditSingerComponent implements OnInit {
     this.activatedRouter.paramMap.subscribe( async paramMap =>{
 
       // @ts-ignore
-      this.name= paramMap.get('singer');
-      this.getSingerList(this.name);
+      this.id= +paramMap.get('singer');
+      this.getSingerList(this.id);
       this.getAuthen();
     })
   }
 
   ngOnInit(): void {
   }
-  getSingerList(name: string): void{
-    this.singerService.findByName(name).subscribe(value1 => {
+  getSingerList(id: number): void{
+    this.singerService.findByID(id).subscribe(value1 => {
       this.singer = value1;
       }
     )

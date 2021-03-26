@@ -41,8 +41,8 @@ export class LoginComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   login(){
-    console.log(this.user.username?.startsWith(' '));
-    if(this.user.password == ''  && (this.user.password?.startsWith(' ')) || this.user.username == ''  && (this.user.username?.startsWith(' '))){
+
+    if(this.user.password !== ''  && (!this.user.password?.startsWith(' ')) || this.user.username !== ''  && (!this.user.username?.startsWith(' '))){
       this.authService.login( this.user.username, this.user.password)
         .pipe(first())
         .subscribe(data => {
@@ -50,6 +50,7 @@ export class LoginComponent implements OnInit {
           this.isLoggedIn = true;
           this.isLoginFailed = false;
         }, err => {
+          alert("Mật khẩu hoặc tài khoản không đúng");
           this.isLoginFailed = true;
           this.errorMessage = err.error.message;
         });

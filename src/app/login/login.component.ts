@@ -36,16 +36,23 @@ export class LoginComponent implements OnInit {
 
   // tslint:disable-next-line:typedef
   login(){
-    this.authService.login( this.user.username, this.user.password)
-      .pipe(first())
-      .subscribe(data => {
-        this.router.navigate(['/profile/' + this.user.username]);
-        this.isLoggedIn = true;
-        this.isLoginFailed = false;
-      }, err => {
-        this.isLoginFailed = true;
-        this.errorMessage = err.error.message;
-      });
+
+    if(this.user.password !== ''  && (!this.user.password?.startsWith(' ')) || this.user.username !== ''  && (!this.user.username?.startsWith(' '))){
+      this.authService.login( this.user.username, this.user.password)
+        .pipe(first())
+        .subscribe(data => {
+          this.router.navigate(['/profile/' + this.user.username]);
+          this.isLoggedIn = true;
+          this.isLoginFailed = false;
+        }, err => {
+          alert("Mật khẩu hoặc tài khoản không đúng");
+          this.isLoginFailed = true;
+          this.errorMessage = err.error.message;
+        });
+    }else {
+      alert("Vui lòng điền hết các trường và không chứa khoảng trắng ở đầu");
+    }
+
   }
 
 }

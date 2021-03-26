@@ -54,51 +54,13 @@ export class RegisterComponent implements OnInit {
 
 
   register(){
-    // if ((this.customer.name + '').length > 0 && this.customer.name != undefined){
-    //   this.validateName = true;
-    //   if ((this.customer.username + '').length > 5 && this.customer.username != undefined){
-    //     for (let i = 0 ; i < this.listUser.length; i++){
-    //       if (this.customer.username == this.listUser[i].username){
-    //         this.validateUsername = false;
-    //         break;
-    //       }else {
-    //         this.validateUsername = true;
-    //       }
-    //     }
-    //     if (this.validateUsername){
-    //       if ((this.customer.password + '').length > 5 && this.customer.password != undefined){
-    //         this.validatePassword = true;
-    //         if ((this.validateEmail()) && ((this.customer.email + '').length !== 9)){
-    //           this.createEmail = true;
-    //         }else {
-    //           this.createEmail = false;
-    //         }
-    //         if (((this.customer.tel + '').length > 7 && (this.customer.tel + '').length < 12 && (this.customer.tel + '').length !== 9)   ){
-    //           this.validateTel = true;
-    //
-    //           // this.router.navigate(["login"]);
-    //         }else {
-    //           this.validateTel = false;
-    //         }
-    //       }else {
-    //         this.validatePassword = false;
-    //       }
-    //     }
-    //   }else {
-    //     this.validateUsername = false;
-    //   }
-    // }else {
-    //   this.validateName = false;
-    // }
-
-    // fix
     if ((this.customer.name + '').length > 0 && this.customer.name != undefined && (!(this.customer.name + '').startsWith(' ')) ) {
       this.validateName = true;
     }else {
       this.validateName = false;
     }
 
-    if ((this.customer.username + '').length !== 9 && (!(this.customer.username + '').startsWith(' ')) ){
+    if ((this.customer.username + '').length > 0 && this.customer.name != undefined && (!(this.customer.username + '').startsWith(' ')) ){
       this.validateUsername = true;
       for (let i = 0 ; i < this.listUser.length; i++){
         if (this.customer.username == this.listUser[i].username){
@@ -127,7 +89,7 @@ export class RegisterComponent implements OnInit {
       this.createEmail = false;
     }
 
-    if (((this.customer.tel + '').length > 7 && (this.customer.tel + '').length < 12 && (this.customer.tel + '').length !== 9 )   ){
+    if (((this.customer.tel + '').length > 7 && (this.customer.tel + '').length < 12 && (this.customer.tel + '').length !== 10 )   ){
       this.validateTel = true;
 
       // this.router.navigate(["login"]);
@@ -156,7 +118,9 @@ export class RegisterComponent implements OnInit {
 
     if (this.validateName && this.validateUsername && this.validatePassword && this.validateTel && this.validateAddress && this.createEmail && this.createAddress  ){
       this.userdetailservice.createNewCustomer(this.customer).subscribe(() => {
-        alert("hoang");
+        if(confirm("Đăng ký thành công")){
+          this.router.navigate(["/login"]);
+        }
         this.createSuccess = true;
         this.logindisplay = true;
       });

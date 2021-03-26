@@ -81,6 +81,9 @@ export class CreatesongComponent implements OnInit {
               this.createSong();
               this.progressLoading == this.maxProgress;
               this.myBar = `width:  ${this.maxProgress}%`;
+              if(confirm("Đăng nhạc thành công")){
+                this.route.navigate(["/"]);
+              }
             }
           });
         })

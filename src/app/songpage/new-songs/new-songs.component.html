@@ -8,7 +8,7 @@
             <img src="{{song.avatar}}" class="mr-3 rounded" width="85" height="85" alt="...">
           </div>
           <div class="media-body">
-            <h4 class="mt-0 mb-1"><a [routerLink]="['/song/'+song.id]">{{song.name}}</a></h4>
+            <h4 class="mt-0 mb-1"><a [routerLink]="['/song/',song.id]">{{song.name}}</a></h4>
             <small>{{song.author}}</small>
           </div>
           <a (click)="getSongId(song.id)" class="px-2 py-1 mr-2 bg-success text-white" title="Play"><i class="fas fa-play"></i></a>

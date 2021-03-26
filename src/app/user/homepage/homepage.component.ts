@@ -3,7 +3,6 @@ import {Playlist} from '../../model/playlist';
 import {PlaylistService} from '../../service/playlist/playlist.service';
 import {song} from '../../model/song';
 import {SongService} from '../../service/song/song.service';
-import { DataServiceService } from 'src/app/service/data/data-service.service';
 
 declare var $: any;
 
@@ -18,22 +17,14 @@ export class HomepageComponent implements OnInit {
   listPlaylistNew : Playlist[] = [];
   listSongMostView10 : song[] = [];
 
-  showUp = false;
+  songId:number | undefined;
 
-  // @ts-ignore
-  songId: number;
-
-  getSongId(id:any){
+  getSongId(id:number){
     this.songId = id;
     console.log(this.songId);
-    this.data.changeMessage(id);
-    this.data.changeShowUp("true");
   }
-  constructor( private playlistService: PlaylistService,
-               private songService: SongService,
-               private data: DataServiceService) {
+  constructor(private playlistService: PlaylistService, private songService: SongService) {
   }
-
 
   ngOnInit(): void {
     this.playlistService.latestPlaylist().subscribe( async listPlaylistNew => {
@@ -60,7 +51,6 @@ export class HomepageComponent implements OnInit {
     })
 
   }
-  // tslint:disable-next-line:typedef
   songLike(){
     this.showSongLike = true;
     this.showPlaylistLike = false;
